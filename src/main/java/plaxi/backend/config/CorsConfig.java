@@ -14,16 +14,11 @@ public class CorsConfig {
     @Bean
     public CorsFilter corsFilter() {
         CorsConfiguration corsConfiguration = new CorsConfiguration();
-        // Orígenes permitidos
         corsConfiguration.setAllowedOrigins(Arrays.asList("http://localhost:4200", "http://tudominio.com"));
-        // Métodos permitidos
         corsConfiguration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH"));
-        // Encabezados permitidos
-        corsConfiguration.setAllowedHeaders(Arrays.asList("*")); // Permitir todos los encabezados
-        // Permitir credenciales
+        corsConfiguration.setAllowedHeaders(Arrays.asList("*"));
         corsConfiguration.setAllowCredentials(true);
-        // Tiempo máximo de cacheo de preflight (opcional)
-        corsConfiguration.setMaxAge(3600L); // Cachea la respuesta de preflight por 1 hora
+        corsConfiguration.setMaxAge(3600L);
 
         // Configura el origen y los paths para los que se aplicará esta configuración
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();

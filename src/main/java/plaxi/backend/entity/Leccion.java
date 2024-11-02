@@ -3,6 +3,7 @@ package plaxi.backend.entity;
 import java.io.Serializable;
 import jakarta.persistence.*;
 
+
 @Entity
 @Table(name = "Leccion", catalog = "PlaxiDB", schema = "public")
 public class Leccion implements Serializable {
@@ -27,6 +28,9 @@ public class Leccion implements Serializable {
     @Column(name = "contenido", nullable = false)
     private String contenido;
 
+    @Column(name = "estado", nullable = false)
+    private boolean estado;
+
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "curso_id_curso", referencedColumnName = "id_curso", nullable = false)
     private Curso curso;
@@ -34,15 +38,16 @@ public class Leccion implements Serializable {
     public Leccion() {
     }
 
-    public Leccion(String titulo, int orden, int duracionEstimada, String contenido, Curso curso) {
+    public Leccion(Long idLeccion, String titulo, int orden, int duracionEstimada, String contenido, boolean estado, Curso curso) {
+        this.idLeccion = idLeccion;
         this.titulo = titulo;
         this.orden = orden;
         this.duracionEstimada = duracionEstimada;
         this.contenido = contenido;
+        this.estado = estado;
         this.curso = curso;
     }
 
-    // Getters y Setters
     public Long getIdLeccion() {
         return idLeccion;
     }
@@ -81,6 +86,14 @@ public class Leccion implements Serializable {
 
     public void setContenido(String contenido) {
         this.contenido = contenido;
+    }
+
+    public boolean isEstado() {
+        return estado;
+    }
+
+    public void setEstado(boolean estado) {
+        this.estado = estado;
     }
 
     public Curso getCurso() {

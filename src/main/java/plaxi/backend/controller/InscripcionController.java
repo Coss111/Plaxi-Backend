@@ -51,4 +51,10 @@ public class InscripcionController {
         }
         return ResponseEntity.notFound().build();
     }
+
+    @GetMapping("/usuario/{usuarioId}")
+    public ResponseEntity<List<InscripcionResponseDto>> getInscripcionesByUsuarioId(@PathVariable Long usuarioId) {
+        List<InscripcionResponseDto> inscripciones = inscripcionService.getInscripcionesByUsuarioId(usuarioId);
+        return ResponseEntity.ok(inscripciones);
+    }
 }

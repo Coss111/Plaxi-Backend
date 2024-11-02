@@ -5,29 +5,36 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b31b93c9-f966-4184-865c-4048a9f6a392" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/plaxi/backend/controller/CategoriaController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/plaxi/backend/controller/InscripcionController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/plaxi/backend/dto/InscripcionDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/plaxi/backend/dto/InscripcionResponseDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/plaxi/backend/entity/Inscripcion.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/plaxi/backend/repository/InscripcionRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/plaxi/backend/service/CategoriaService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/plaxi/backend/service/InscripcionService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/LeccionController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/plaxi/backend/controller/GmailGerenciaController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/plaxi/backend/service/GmailGerenciaServices.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/plaxi/backend/controller/CursoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/plaxi/backend/controller/CursoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/plaxi/backend/dto/ActualizarCursoDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/plaxi/backend/dto/ActualizarCursoDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/plaxi/backend/dto/CursoDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/plaxi/backend/dto/CursoDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/plaxi/backend/entity/Curso.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/plaxi/backend/entity/Curso.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/plaxi/backend/repository/CursoRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/plaxi/backend/repository/CursoRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/plaxi/backend/service/CursoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/plaxi/backend/service/CursoService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/plaxi/backend/controller/CursoController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/plaxi/backend/controller/CursoController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/plaxi/backend/dto/ActualizarCursoDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/plaxi/backend/dto/ActualizarCursoDto.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/plaxi/backend/dto/CursoDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/plaxi/backend/dto/CursoDto.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/plaxi/backend/entity/Curso.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/plaxi/backend/entity/Curso.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/plaxi/backend/repository/CursoRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/plaxi/backend/repository/CursoRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/plaxi/backend/service/CursoService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/plaxi/backend/service/CursoService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/plaxi/backend/config/CorsConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/plaxi/backend/config/CorsConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/plaxi/backend/controller/InscripcionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/plaxi/backend/controller/InscripcionController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/plaxi/backend/controller/UsuarioController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/plaxi/backend/dto/LeccionDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/plaxi/backend/dto/LeccionDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/plaxi/backend/dto/TemaDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/plaxi/backend/dto/TemaDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/plaxi/backend/entity/Leccion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/plaxi/backend/entity/Leccion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/plaxi/backend/entity/Tema.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/plaxi/backend/entity/Tema.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/plaxi/backend/repository/InscripcionRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/plaxi/backend/repository/InscripcionRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/plaxi/backend/repository/LeccionRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/plaxi/backend/repository/LeccionRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/plaxi/backend/repository/TemaRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/plaxi/backend/repository/TemaRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/plaxi/backend/service/InscripcionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/plaxi/backend/service/InscripcionService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/plaxi/backend/config/CorsConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/plaxi/backend/config/CorsConfig.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/plaxi/backend/controller/InscripcionController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/plaxi/backend/controller/InscripcionController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/plaxi/backend/controller/PerfilController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/plaxi/backend/controller/PerfilController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/plaxi/backend/dto/LeccionDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/plaxi/backend/dto/LeccionDto.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/plaxi/backend/dto/TemaDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/plaxi/backend/dto/TemaDto.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/plaxi/backend/entity/Leccion.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/plaxi/backend/entity/Leccion.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/plaxi/backend/entity/Tema.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/plaxi/backend/entity/Tema.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/plaxi/backend/repository/InscripcionRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/plaxi/backend/repository/InscripcionRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/plaxi/backend/repository/LeccionRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/plaxi/backend/repository/LeccionRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/plaxi/backend/repository/TemaRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/plaxi/backend/repository/TemaRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/plaxi/backend/service/InscripcionService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/plaxi/backend/service/InscripcionService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/plaxi/backend/service/PerfilService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/plaxi/backend/service/PerfilService.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,11 +71,12 @@
     &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
     &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;Spring Boot.BackendApplication.executor&quot;: &quot;Run&quot;,
     &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/trabajo/Luis/restaurante&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/alex/backendtaller&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -76,8 +84,22 @@
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;preferences.JavaFX&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;postgresql&quot;
+    ]
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\TallerSoftware\Plaxi-Backend\src\main\java\plaxi\backend\controller" />
+      <recent name="D:\TallerSoftware\Plaxi-Backend\src\main\java\plaxi\backend\entity" />
+      <recent name="D:\TallerSoftware\Plaxi-Backend\src\main\java\plaxi\backend\repository" />
+      <recent name="D:\TallerSoftware\Plaxi-Backend\src\main\java\plaxi\backend\service" />
+      <recent name="D:\TallerSoftware\Plaxi-Backend\src\main\java\plaxi\backend\dto" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="BackendApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="backend" />
@@ -126,7 +148,28 @@
       <workItem from="1727897957726" duration="833000" />
       <workItem from="1727962355078" duration="8421000" />
       <workItem from="1728049443352" duration="6789000" />
-      <workItem from="1728065466920" duration="2571000" />
+      <workItem from="1728065466920" duration="4660000" />
+      <workItem from="1728081472482" duration="1875000" />
+      <workItem from="1728087885757" duration="538000" />
+      <workItem from="1728137144474" duration="28000" />
+      <workItem from="1728397319029" duration="600000" />
+      <workItem from="1729355012110" duration="512000" />
+      <workItem from="1729516967215" duration="11000" />
+      <workItem from="1729539665318" duration="574000" />
+      <workItem from="1729549145442" duration="618000" />
+      <workItem from="1729551527691" duration="2364000" />
+      <workItem from="1729636702683" duration="6000" />
+      <workItem from="1729637547195" duration="74000" />
+      <workItem from="1729894621432" duration="2183000" />
+      <workItem from="1729958848321" duration="37000" />
+      <workItem from="1730070784099" duration="60000" />
+      <workItem from="1730139506078" duration="3363000" />
+      <workItem from="1730149640760" duration="20000" />
+      <workItem from="1730313606295" duration="1318000" />
+      <workItem from="1730323122603" duration="25000" />
+      <workItem from="1730323194242" duration="2175000" />
+      <workItem from="1730509393593" duration="782000" />
+      <workItem from="1730559626422" duration="3236000" />
     </task>
     <servers />
   </component>

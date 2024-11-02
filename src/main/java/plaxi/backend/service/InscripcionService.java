@@ -111,4 +111,17 @@ public class InscripcionService {
         );
     }
 
+
+    public List<InscripcionResponseDto> getInscripcionesByUsuarioId(Long usuarioId) {
+        // Obtener todas las inscripciones del repositorio
+        List<Inscripcion> inscripciones = inscripcionRepository.findByUsuario_IdUsuario(usuarioId);
+        List<InscripcionResponseDto> responseList = new ArrayList<>();
+
+        for (Inscripcion inscripcion : inscripciones) {
+            responseList.add(convertToDto(inscripcion));
+        }
+        return responseList;
+    }
+
+
 }
