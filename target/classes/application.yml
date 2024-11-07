@@ -5,9 +5,9 @@ spring:
   application:
     name: backend
   datasource:
-    url: jdbc:postgresql://localhost:5432/PlaxiDB
+    url: jdbc:postgresql://localhost:5433/PlaxiDB
     username: postgres
-    password: 140798
+    password: jose
     driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
@@ -38,8 +38,6 @@ spring:
       max-request-size: 1GB
 minio:
   url: http://localhost:9000
-#  access-key: minioadmin
-#  secret-key: minioadmin
   access-key: minio
   secret-key: minio1234
   bucket-name: fotoperfil

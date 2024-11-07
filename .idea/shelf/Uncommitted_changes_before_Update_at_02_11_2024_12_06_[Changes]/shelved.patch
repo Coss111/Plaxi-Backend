@@ -1,0 +1,172 @@
+Index: LeccionController.java
+===================================================================
+diff --git a/LeccionController.java b/LeccionController.java
+deleted file mode 100644
+--- a/LeccionController.java	(revision 421a66e9ce8ba1516ceb08a09b44c758b4b0296d)
++++ /dev/null	(revision 421a66e9ce8ba1516ceb08a09b44c758b4b0296d)
+@@ -1,110 +0,0 @@
+-package plaxi.backend.controller;
+-
+-import org.slf4j.Logger;
+-import org.slf4j.LoggerFactory;
+-import org.springframework.beans.factory.annotation.Autowired;
+-import org.springframework.data.domain.Page;
+-import org.springframework.http.HttpStatus;
+-import org.springframework.http.ResponseEntity;
+-import org.springframework.web.bind.annotation.*;
+-
+-import plaxi.backend.dto.LeccionDto;
+-import plaxi.backend.dto.PaginadoDto;
+-import plaxi.backend.service.LeccionService;
+-
+-import java.util.List;
+-
+-@RestController
+-@RequestMapping("/api/leccion")
+-public class LeccionController {
+-
+-    private static final Logger logger = LoggerFactory.getLogger(LeccionController.class);
+-
+-    @Autowired
+-    private LeccionService leccionService;
+-
+-    // Obtener todas las lecciones
+-    @GetMapping("/all")
+-    public ResponseEntity<Page<LeccionDto>> getAllLecciones(@RequestBody PaginadoDto paginadoDto) {
+-        logger.info("Solicitud para obtener todas las lecciones");
+-        try {
+-            Page<LeccionDto> lecciones = leccionService.getAllLecciones(paginadoDto);
+-            logger.info("Lecciones obtenidas exitosamente");
+-            return ResponseEntity.ok(lecciones);
+-        } catch (Exception e) {
+-            logger.error("Error al obtener las lecciones: {}", e.getMessage());
+-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+-        }
+-    }
+-
+-    // Obtener leccion por ID
+-    @GetMapping("/{idLeccion}")
+-    public ResponseEntity<LeccionDto> getLeccionById(@PathVariable Long idLeccion) {
+-        logger.info("Solicitud para obtener la leccion con ID: {}", idLeccion);
+-        try {
+-            LeccionDto leccion = leccionService.getLeccion(idLeccion);
+-            logger.info("Leccion obtenida exitosamente con ID: {}", idLeccion);
+-            return ResponseEntity.ok(leccion);
+-        } catch (Exception e) {
+-            logger.error("Error al obtener la leccion con ID: {} - {}", idLeccion, e.getMessage());
+-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+-        }
+-    }
+-
+-    // Obtener lecciones por curso
+-    @GetMapping("/curso/{cursoId}")
+-    public ResponseEntity<Page<LeccionDto>> getLeccionesByCurso(@PathVariable Long cursoId, @RequestBody PaginadoDto paginadoDto) {
+-        logger.info("Solicitud para obtener lecciones del curso con ID: {}", cursoId);
+-        try {
+-            Page<LeccionDto> lecciones = leccionService.getLeccionesByCurso(cursoId, paginadoDto);
+-            logger.info("Lecciones obtenidas exitosamente para el curso con ID: {}", cursoId);
+-            return ResponseEntity.ok(lecciones);
+-        } catch (Exception e) {
+-            logger.error("Error al obtener las lecciones del curso con ID: {} - {}", cursoId, e.getMessage());
+-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+-        }
+-    }
+-
+-    // Crear leccion
+-    @PostMapping("/create")
+-    public ResponseEntity<String> createLeccion(@RequestBody LeccionDto leccionDto) {
+-        logger.info("Solicitud para crear una nueva leccion");
+-        try {
+-            leccionService.createLeccion(leccionDto);
+-            logger.info("Leccion creada exitosamente.");
+-            return ResponseEntity.ok("Leccion creada exitosamente.");
+-
+-        } catch (Exception e) {
+-            logger.error("Error al crear la leccion: {}", e.getMessage());
+-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+-        }
+-    }
+-
+-    // Actualizar leccion
+-    @PutMapping("/update")
+-    public ResponseEntity<String> updateLeccion(@RequestBody LeccionDto leccionDto) {
+-        logger.info("Solicitud para actualizar la leccion con ID: {}", leccionDto.getIdLeccion());
+-        try {
+-            leccionService.updateLeccion(leccionDto);
+-            logger.info("Leccion actualizada exitosamente.");
+-            return ResponseEntity.ok("Leccion actualizada exitosamente.");
+-        } catch (Exception e) {
+-            logger.error("Error al actualizar la leccion con ID: {} - {}", leccionDto.getIdLeccion(), e.getMessage());
+-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+-        }
+-    }
+-
+-    // Eliminar leccion
+-    @DeleteMapping("/delete/{idLeccion}")
+-    public ResponseEntity<String> deleteLeccion(@PathVariable Long idLeccion) {
+-        logger.info("Solicitud para eliminar la leccion con ID: {}", idLeccion);
+-        try {
+-            leccionService.deleteLeccion(idLeccion);
+-            logger.info("Leccion eliminada exitosamente.");
+-            return ResponseEntity.ok("Leccion eliminada exitosamente.");
+-        } catch (Exception e) {
+-            logger.error("Error al eliminar la leccion con ID: {} - {}", idLeccion, e.getMessage());
+-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+-        }
+-    }
+-}
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"b31b93c9-f966-4184-865c-4048a9f6a392\" name=\"Changes\" comment=\"\">\r\n      <change afterPath=\"$PROJECT_DIR$/.idea/dataSources.xml\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/LeccionController.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/plaxi/backend/controller/GmailGerenciaController.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/plaxi/backend/service/GmailGerenciaServices.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/compiler.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/compiler.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/pom.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/pom.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/plaxi/backend/config/CorsConfig.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/plaxi/backend/config/CorsConfig.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/plaxi/backend/controller/InscripcionController.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/plaxi/backend/controller/InscripcionController.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/plaxi/backend/controller/UsuarioController.java\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/plaxi/backend/dto/LeccionDto.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/plaxi/backend/dto/LeccionDto.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/plaxi/backend/dto/TemaDto.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/plaxi/backend/dto/TemaDto.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/plaxi/backend/entity/Leccion.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/plaxi/backend/entity/Leccion.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/plaxi/backend/entity/Tema.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/plaxi/backend/entity/Tema.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/plaxi/backend/repository/InscripcionRepository.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/plaxi/backend/repository/InscripcionRepository.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/plaxi/backend/repository/LeccionRepository.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/plaxi/backend/repository/LeccionRepository.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/plaxi/backend/repository/TemaRepository.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/plaxi/backend/repository/TemaRepository.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/plaxi/backend/service/InscripcionService.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/plaxi/backend/service/InscripcionService.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/classes/plaxi/backend/config/CorsConfig.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/target/classes/plaxi/backend/config/CorsConfig.class\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/classes/plaxi/backend/controller/InscripcionController.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/target/classes/plaxi/backend/controller/InscripcionController.class\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/classes/plaxi/backend/controller/PerfilController.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/target/classes/plaxi/backend/controller/PerfilController.class\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/classes/plaxi/backend/dto/LeccionDto.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/target/classes/plaxi/backend/dto/LeccionDto.class\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/classes/plaxi/backend/dto/TemaDto.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/target/classes/plaxi/backend/dto/TemaDto.class\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/classes/plaxi/backend/entity/Leccion.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/target/classes/plaxi/backend/entity/Leccion.class\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/classes/plaxi/backend/entity/Tema.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/target/classes/plaxi/backend/entity/Tema.class\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/classes/plaxi/backend/repository/InscripcionRepository.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/target/classes/plaxi/backend/repository/InscripcionRepository.class\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/classes/plaxi/backend/repository/LeccionRepository.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/target/classes/plaxi/backend/repository/LeccionRepository.class\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/classes/plaxi/backend/repository/TemaRepository.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/target/classes/plaxi/backend/repository/TemaRepository.class\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/classes/plaxi/backend/service/InscripcionService.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/target/classes/plaxi/backend/service/InscripcionService.class\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/classes/plaxi/backend/service/PerfilService.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/target/classes/plaxi/backend/service/PerfilService.class\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"ComposerSettings\">\r\n    <execution />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Interface\" />\r\n        <option value=\"Class\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"PhpWorkspaceProjectConfiguration\" interpreter_name=\"C:\\xampp\\php\\php.exe\" />\r\n  <component name=\"ProjectColorInfo\">{\r\n  &quot;associatedIndex&quot;: 2\r\n}</component>\r\n  <component name=\"ProjectId\" id=\"2luDpuv8BTeV1TSJI8n9cUkBkBU\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">{\r\n  &quot;keyToString&quot;: {\r\n    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,\r\n    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,\r\n    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,\r\n    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,\r\n    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,\r\n    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,\r\n    &quot;Spring Boot.BackendApplication.executor&quot;: &quot;Run&quot;,\r\n    &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,\r\n    &quot;git-widget-placeholder&quot;: &quot;main&quot;,\r\n    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,\r\n    &quot;last_opened_file_path&quot;: &quot;D:/alex/backendtaller&quot;,\r\n    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,\r\n    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,\r\n    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,\r\n    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,\r\n    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,\r\n    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.JavaFX&quot;,\r\n    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;\r\n  },\r\n  &quot;keyToStringList&quot;: {\r\n    &quot;DatabaseDriversLRU&quot;: [\r\n      &quot;postgresql&quot;\r\n    ]\r\n  }\r\n}</component>\r\n  <component name=\"RecentsManager\">\r\n    <key name=\"CopyFile.RECENT_KEYS\">\r\n      <recent name=\"D:\\TallerSoftware\\Plaxi-Backend\\src\\main\\java\\plaxi\\backend\\controller\" />\r\n      <recent name=\"D:\\TallerSoftware\\Plaxi-Backend\\src\\main\\java\\plaxi\\backend\\entity\" />\r\n      <recent name=\"D:\\TallerSoftware\\Plaxi-Backend\\src\\main\\java\\plaxi\\backend\\repository\" />\r\n      <recent name=\"D:\\TallerSoftware\\Plaxi-Backend\\src\\main\\java\\plaxi\\backend\\service\" />\r\n      <recent name=\"D:\\TallerSoftware\\Plaxi-Backend\\src\\main\\java\\plaxi\\backend\\dto\" />\r\n    </key>\r\n  </component>\r\n  <component name=\"RunManager\">\r\n    <configuration name=\"BackendApplication\" type=\"SpringBootApplicationConfigurationType\" factoryName=\"Spring Boot\" nameIsGenerated=\"true\">\r\n      <module name=\"backend\" />\r\n      <option name=\"SPRING_BOOT_MAIN_CLASS\" value=\"plaxi.backend.BackendApplication\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n  </component>\r\n  <component name=\"SharedIndexes\">\r\n    <attachedChunks>\r\n      <set>\r\n        <option value=\"bundled-jdk-9f38398b9061-39b83d9b5494-intellij.indexing.shared.core-IU-241.18034.62\" />\r\n        <option value=\"bundled-js-predefined-1d06a55b98c1-0b3e54e931b4-JavaScript-IU-241.18034.62\" />\r\n      </set>\r\n    </attachedChunks>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"b31b93c9-f966-4184-865c-4048a9f6a392\" name=\"Changes\" comment=\"\" />\r\n      <created>1726021253611</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1726021253611</updated>\r\n      <workItem from=\"1726021254655\" duration=\"618000\" />\r\n      <workItem from=\"1726062848603\" duration=\"7274000\" />\r\n      <workItem from=\"1726144238696\" duration=\"969000\" />\r\n      <workItem from=\"1726151121731\" duration=\"147000\" />\r\n      <workItem from=\"1726232709199\" duration=\"2031000\" />\r\n      <workItem from=\"1726236738109\" duration=\"317000\" />\r\n      <workItem from=\"1726668348301\" duration=\"6552000\" />\r\n      <workItem from=\"1726797877002\" duration=\"25000\" />\r\n      <workItem from=\"1726837540642\" duration=\"6148000\" />\r\n      <workItem from=\"1726869055658\" duration=\"330000\" />\r\n      <workItem from=\"1727108723637\" duration=\"47000\" />\r\n      <workItem from=\"1727109953791\" duration=\"97000\" />\r\n      <workItem from=\"1727450690691\" duration=\"337000\" />\r\n      <workItem from=\"1727451806063\" duration=\"643000\" />\r\n      <workItem from=\"1727473218091\" duration=\"3455000\" />\r\n      <workItem from=\"1727618368156\" duration=\"2333000\" />\r\n      <workItem from=\"1727647934420\" duration=\"490000\" />\r\n      <workItem from=\"1727701392922\" duration=\"131000\" />\r\n      <workItem from=\"1727807217197\" duration=\"864000\" />\r\n      <workItem from=\"1727874068893\" duration=\"676000\" />\r\n      <workItem from=\"1727897957726\" duration=\"833000\" />\r\n      <workItem from=\"1727962355078\" duration=\"8421000\" />\r\n      <workItem from=\"1728049443352\" duration=\"6789000\" />\r\n      <workItem from=\"1728065466920\" duration=\"4660000\" />\r\n      <workItem from=\"1728081472482\" duration=\"1875000\" />\r\n      <workItem from=\"1728087885757\" duration=\"538000\" />\r\n      <workItem from=\"1728137144474\" duration=\"28000\" />\r\n      <workItem from=\"1728397319029\" duration=\"600000\" />\r\n      <workItem from=\"1729355012110\" duration=\"512000\" />\r\n      <workItem from=\"1729516967215\" duration=\"11000\" />\r\n      <workItem from=\"1729539665318\" duration=\"574000\" />\r\n      <workItem from=\"1729549145442\" duration=\"618000\" />\r\n      <workItem from=\"1729551527691\" duration=\"2364000\" />\r\n      <workItem from=\"1729636702683\" duration=\"6000\" />\r\n      <workItem from=\"1729637547195\" duration=\"74000\" />\r\n      <workItem from=\"1729894621432\" duration=\"2183000\" />\r\n      <workItem from=\"1729958848321\" duration=\"37000\" />\r\n      <workItem from=\"1730070784099\" duration=\"60000\" />\r\n      <workItem from=\"1730139506078\" duration=\"3363000\" />\r\n      <workItem from=\"1730149640760\" duration=\"20000\" />\r\n      <workItem from=\"1730313606295\" duration=\"1318000\" />\r\n      <workItem from=\"1730323122603\" duration=\"25000\" />\r\n      <workItem from=\"1730323194242\" duration=\"2175000\" />\r\n      <workItem from=\"1730509393593\" duration=\"782000\" />\r\n      <workItem from=\"1730559626422\" duration=\"3236000\" />\r\n    </task>\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"XSLT-Support.FileAssociations.UIState\">\r\n    <expand />\r\n    <select />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 421a66e9ce8ba1516ceb08a09b44c758b4b0296d)
++++ b/.idea/workspace.xml	(date 1730563425110)
+@@ -5,10 +5,27 @@
+   </component>
+   <component name="ChangeListManager">
+     <list default="true" id="b31b93c9-f966-4184-865c-4048a9f6a392" name="Changes" comment="">
++      <change afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+       <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/.idea/dataSources/282d3ec1-013f-4222-abfc-bfa4034a708e.xml" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/.idea/dataSources/282d3ec1-013f-4222-abfc-bfa4034a708e/storage_v2/_src_/database/PlaxiDB.dO7MRQ.meta" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/.idea/dataSources/282d3ec1-013f-4222-abfc-bfa4034a708e/storage_v2/_src_/database/PlaxiDB.dO7MRQ/schema/public.abK9xQ.meta" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+       <change afterPath="$PROJECT_DIR$/LeccionController.java" afterDir="false" />
+       <change afterPath="$PROJECT_DIR$/src/main/java/plaxi/backend/controller/GmailGerenciaController.java" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/src/main/java/plaxi/backend/controller/LeccionController.java" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/src/main/java/plaxi/backend/controller/TemaController.java" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/src/main/java/plaxi/backend/dto/PaginadoDto.java" afterDir="false" />
+       <change afterPath="$PROJECT_DIR$/src/main/java/plaxi/backend/service/GmailGerenciaServices.java" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/src/main/java/plaxi/backend/service/LeccionService.java" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/src/main/java/plaxi/backend/service/TemaService.java" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/target/classes/plaxi/backend/controller/GmailGerenciaController.class" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/target/classes/plaxi/backend/controller/LeccionController.class" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/target/classes/plaxi/backend/controller/TemaController.class" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/target/classes/plaxi/backend/dto/PaginadoDto.class" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/target/classes/plaxi/backend/service/GmailGerenciaServices.class" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/target/classes/plaxi/backend/service/LeccionService.class" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/target/classes/plaxi/backend/service/TemaService.class" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+@@ -26,6 +43,7 @@
+       <change beforePath="$PROJECT_DIR$/target/classes/plaxi/backend/config/CorsConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/plaxi/backend/config/CorsConfig.class" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/target/classes/plaxi/backend/controller/InscripcionController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/plaxi/backend/controller/InscripcionController.class" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/target/classes/plaxi/backend/controller/PerfilController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/plaxi/backend/controller/PerfilController.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/target/classes/plaxi/backend/controller/UsuarioController.class" beforeDir="false" />
+       <change beforePath="$PROJECT_DIR$/target/classes/plaxi/backend/dto/LeccionDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/plaxi/backend/dto/LeccionDto.class" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/target/classes/plaxi/backend/dto/TemaDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/plaxi/backend/dto/TemaDto.class" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/target/classes/plaxi/backend/entity/Leccion.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/plaxi/backend/entity/Leccion.class" afterDir="false" />
+@@ -169,7 +187,7 @@
+       <workItem from="1730323122603" duration="25000" />
+       <workItem from="1730323194242" duration="2175000" />
+       <workItem from="1730509393593" duration="782000" />
+-      <workItem from="1730559626422" duration="3236000" />
++      <workItem from="1730559626422" duration="3696000" />
+     </task>
+     <servers />
+   </component>

@@ -5,36 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b31b93c9-f966-4184-865c-4048a9f6a392" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/LeccionController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/plaxi/backend/controller/GmailGerenciaController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/plaxi/backend/service/GmailGerenciaServices.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/plaxi/backend/config/CorsConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/plaxi/backend/config/CorsConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/plaxi/backend/controller/InscripcionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/plaxi/backend/controller/InscripcionController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/plaxi/backend/controller/UsuarioController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/plaxi/backend/dto/LeccionDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/plaxi/backend/dto/LeccionDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/plaxi/backend/dto/TemaDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/plaxi/backend/dto/TemaDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/plaxi/backend/entity/Leccion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/plaxi/backend/entity/Leccion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/plaxi/backend/entity/Tema.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/plaxi/backend/entity/Tema.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/plaxi/backend/repository/InscripcionRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/plaxi/backend/repository/InscripcionRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/plaxi/backend/repository/LeccionRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/plaxi/backend/repository/LeccionRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/plaxi/backend/repository/TemaRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/plaxi/backend/repository/TemaRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/plaxi/backend/service/InscripcionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/plaxi/backend/service/InscripcionService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/plaxi/backend/config/CorsConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/plaxi/backend/config/CorsConfig.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/plaxi/backend/controller/InscripcionController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/plaxi/backend/controller/InscripcionController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/plaxi/backend/controller/PerfilController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/plaxi/backend/controller/PerfilController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/plaxi/backend/dto/LeccionDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/plaxi/backend/dto/LeccionDto.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/plaxi/backend/dto/TemaDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/plaxi/backend/dto/TemaDto.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/plaxi/backend/entity/Leccion.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/plaxi/backend/entity/Leccion.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/plaxi/backend/entity/Tema.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/plaxi/backend/entity/Tema.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/plaxi/backend/repository/InscripcionRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/plaxi/backend/repository/InscripcionRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/plaxi/backend/repository/LeccionRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/plaxi/backend/repository/LeccionRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/plaxi/backend/repository/TemaRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/plaxi/backend/repository/TemaRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/plaxi/backend/service/InscripcionService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/plaxi/backend/service/InscripcionService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/plaxi/backend/service/PerfilService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/plaxi/backend/service/PerfilService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -170,6 +143,14 @@
       <workItem from="1730323194242" duration="2175000" />
       <workItem from="1730509393593" duration="782000" />
       <workItem from="1730559626422" duration="3236000" />
+      <workItem from="1730685683054" duration="21000" />
+      <workItem from="1730759565869" duration="230000" />
+      <workItem from="1730763391599" duration="807000" />
+      <workItem from="1730820659066" duration="64000" />
+      <workItem from="1730925050024" duration="150000" />
+      <workItem from="1730925265472" duration="884000" />
+      <workItem from="1730929428174" duration="235000" />
+      <workItem from="1730936160924" duration="1990000" />
     </task>
     <servers />
   </component>
