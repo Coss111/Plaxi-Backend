@@ -12,6 +12,21 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
+    services:
+      postgres:
+        image: postgres:latest
+        env:
+          POSTGRES_DB: PlaxiDB
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: jose
+        ports:
+          - 5433:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
     env:
       SPRING_DATASOURCE_URL: jdbc:postgresql://localhost:5433/PlaxiDB
       SPRING_DATASOURCE_USERNAME: postgres
@@ -40,6 +55,7 @@ jobs:
 
       - name: Run Tests
         run: mvn test
+
 
   deploy:
     runs-on: ubuntu-latest
