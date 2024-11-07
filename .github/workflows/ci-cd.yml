@@ -11,20 +11,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    services:
-      postgres:
-        image: postgres:latest
-        ports:
-          - 5433:5432  # Mapeo de puertos para PostgreSQL
-        env:
-          POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: jose
-          POSTGRES_DB: PlaxiDB
-        options: >
-          --health-cmd="pg_isready -U postgres" 
-          --health-interval=10s 
-          --health-timeout=5s 
-          --health-retries=5
 
     env:
       SPRING_DATASOURCE_URL: jdbc:postgresql://localhost:5433/PlaxiDB
@@ -48,14 +34,6 @@ jobs:
           key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
           restore-keys: |
             ${{ runner.os }}-maven-
-
-      - name: Wait for PostgreSQL to be ready
-        run: |
-          for i in {1..10}; do
-            nc -z localhost 5433 && echo "PostgreSQL is up" && break
-            echo "Waiting for PostgreSQL..."
-            sleep 5
-          done
 
       - name: Build with Maven
         run: mvn clean install -DskipTests=false
