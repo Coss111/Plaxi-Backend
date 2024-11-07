@@ -16,7 +16,7 @@ jobs:
       postgres:
         image: postgres:latest
         env:
-          POSTGRES_DB: PlaxiDB
+          POSTGRES_DB: PlatziDB
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: jose
         ports:
