@@ -12,6 +12,19 @@ jobs:
   build:
     runs-on: ubuntu-latest
     services:
+      postgres:
+        image: postgres:latest
+        ports:
+          - 5433:5432  # Mapea el puerto 5433 en localhost al puerto 5432 en el contenedor
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: jose
+          POSTGRES_DB: PlaxiDB
+        options: >-
+          --health-cmd "pg_isready -U postgres"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
       minio:
         image: minio/minio
         ports:
@@ -44,6 +57,13 @@ jobs:
           key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
           restore-keys: |
             ${{ runner.os }}-maven-
+
+      - name: Wait for PostgreSQL to be ready
+        run: |
+          until pg_isready -h localhost -p 5433 -U postgres; do
+            echo "Waiting for PostgreSQL..."
+            sleep 1
+          done
 
       - name: Build with Maven
         run: mvn clean install -DskipTests=false
