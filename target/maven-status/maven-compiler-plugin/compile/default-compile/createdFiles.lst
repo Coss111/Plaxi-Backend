@@ -36,7 +36,6 @@ plaxi\backend\dto\S3ObjectDto.class
 plaxi\backend\entity\Curso.class
 plaxi\backend\dto\ConocimientoPrevioDto.class
 plaxi\backend\BackendApplication.class
-plaxi\backend\controller\UsuarioController.class
 plaxi\backend\dto\TemaDto.class
 plaxi\backend\entity\Leccion.class
 plaxi\backend\repository\RolRepository.class

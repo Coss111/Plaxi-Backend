@@ -50,10 +50,17 @@ public class LeccionController {
         }
     }
 
-    // Obtener lecciones por curso
     @GetMapping("/curso/{cursoId}")
-    public ResponseEntity<Page<LeccionDto>> getLeccionesByCurso(@PathVariable Long cursoId, @RequestBody PaginadoDto paginadoDto) {
+    public ResponseEntity<Page<LeccionDto>> getLeccionesByCurso(
+            @PathVariable Long cursoId,
+            @RequestParam int page, // Página solicitada
+            @RequestParam int size, // Tamaño de página
+            @RequestParam String sortBy, // Campo por el que ordenar
+            @RequestParam String sortDir) { // Dirección de orden (ascendente o descendente)
         logger.info("Solicitud para obtener lecciones del curso con ID: {}", cursoId);
+        
+        PaginadoDto paginadoDto = new PaginadoDto(page, size, sortBy, sortDir);
+        
         try {
             Page<LeccionDto> lecciones = leccionService.getLeccionesByCurso(cursoId, paginadoDto);
             logger.info("Lecciones obtenidas exitosamente para el curso con ID: {}", cursoId);
@@ -63,6 +70,7 @@ public class LeccionController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
         }
     }
+
 
     // Crear leccion
     @PostMapping("/create")
