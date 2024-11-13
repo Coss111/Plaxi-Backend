@@ -49,11 +49,16 @@ public class TemaController {
         }
     }
 
-    // Obtener temas por lección
     @GetMapping("/leccion/{leccionId}")
-    public ResponseEntity<Page<TemaDto>> getTemasByLeccion(@RequestBody PaginadoDto paginadoDto, @PathVariable Long leccionId) {
+    public ResponseEntity<Page<TemaDto>> getTemasByLeccion(
+            @PathVariable Long leccionId,
+            @RequestParam int page,
+            @RequestParam int size,
+            @RequestParam String sortBy,
+            @RequestParam String sortDir) {
         logger.info("Solicitud para obtener temas de la lección con ID: {}", leccionId);
         try {
+            PaginadoDto paginadoDto = new PaginadoDto(page, size, sortBy, sortDir);
             Page<TemaDto> temas = temaService.getTemasByLeccion(leccionId, paginadoDto);
             logger.info("Temas de la lección con ID: {} obtenidos exitosamente", leccionId);
             return ResponseEntity.ok(temas);
@@ -62,6 +67,8 @@ public class TemaController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
         }
     }
+
+    
 
     // Crear un tema
     @PostMapping("/create")
