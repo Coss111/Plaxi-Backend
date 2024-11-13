@@ -1,7 +1,6 @@
 package plaxi.backend.entity;
 
 import java.io.Serializable;
-
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
@@ -45,7 +44,7 @@ public class Usuario implements Serializable {
     // Relación con la imagen de perfil, puede ser nula
     @JoinColumn(name = "imagen_perfil_id", referencedColumnName = "s3_object_id", nullable = true)
     @ManyToOne(fetch = FetchType.LAZY)
-    private S3Object imagenPerfil;  // Este campo puede ser null inicialmente
+    private S3Object imagenPerfil;
 
     public Usuario() {
     }
