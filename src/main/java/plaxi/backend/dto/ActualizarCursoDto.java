@@ -31,7 +31,7 @@ public class ActualizarCursoDto {
         this.usuarioCreadorId = usuarioCreadorId;  // Inicializar el campo usuarioCreadorId
     }
 
-    // Getters y Setters
+    // Getters y Settersasdvasd
 
     public Long getIdCurso() {
         return idCurso;
