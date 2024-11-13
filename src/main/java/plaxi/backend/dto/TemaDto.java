@@ -16,5 +16,9 @@ public class TemaDto {
     private String recursoMultimedia;
     private boolean estado;
     private Long leccionId;
+
+    public Boolean isEstado() {
+        return estado;
+    }
 }
 

@@ -97,15 +97,17 @@ public class TemaController {
             @RequestParam("orden") int orden,
             @RequestParam("descripcion") String descripcion,
             @RequestParam("leccionId") Long leccionId,
-            @RequestParam("file") MultipartFile file) {
-
-        logger.info("Solicitud para actualizar un tema");
+            @RequestParam("estado") Boolean estado,
+            @RequestParam(value = "file", required = false) MultipartFile file) {
+        
+        logger.info("Received estado: {}", estado);
         TemaDto temaDto = new TemaDto();
         temaDto.setIdTema(idTema);
         temaDto.setTitulo(titulo);
         temaDto.setOrden(orden);
         temaDto.setDescripcion(descripcion);
         temaDto.setLeccionId(leccionId);
+        temaDto.setEstado(estado);
 
         try {
             temaService.updateTema(temaDto, file);
