@@ -63,7 +63,7 @@ public class LeccionService {
         leccion.setContenido(leccionDto.getContenido());
         leccion.setCurso(cursoRepository.findById(leccionDto.getCursoId())
                 .orElseThrow(() -> new RuntimeException("Curso no encontrado")));
-        leccion.setEstado(true);
+        leccion.setEstado(leccionDto.isEstado());
         leccionRepository.save(leccion);
     }
 
@@ -77,7 +77,7 @@ public class LeccionService {
         leccion.setContenido(leccionDto.getContenido());
         leccion.setCurso(cursoRepository.findById(leccionDto.getCursoId())
                 .orElseThrow(() -> new RuntimeException("Curso no encontrado")));
-        leccion.setEstado(true);
+        leccion.setEstado(leccionDto.isEstado());
         leccionRepository.save(leccion);
     }
 

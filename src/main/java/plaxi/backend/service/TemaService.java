@@ -93,26 +93,35 @@ public class TemaService {
 
     // Actualizar un tema
     public void updateTema(TemaDto temaDto, MultipartFile file) throws Exception {
-        // Subir archivo a MinIO y guardar detalles en la base de datos
-        S3ObjectDto s3ObjectDto = recursoMultimediaService.uploadFile(file);
-        S3Object s3Object = s3ObjectRepository.findById(s3ObjectDto.getS3ObjectId())
-                .orElseThrow(() -> new RuntimeException("S3 Object no encontrado"));
-
+        // Find the existing tema
         Tema tema = temaRepository.findById(temaDto.getIdTema())
                 .orElseThrow(() -> new RuntimeException("Tema no encontrado"));
-
+    
         // Obtener la lección asociada
         Leccion leccion = leccionRepository.findById(temaDto.getLeccionId())
                 .orElseThrow(() -> new RuntimeException("Lección no encontrada"));
-
+    
+        // Update tema fields
         tema.setTitulo(temaDto.getTitulo());
         tema.setOrden(temaDto.getOrden());
         tema.setDescripcion(temaDto.getDescripcion());
-        tema.setRecursoMultimedia(s3Object);
         tema.setLeccion(leccion);
-
+        tema.setEstado(temaDto.isEstado()); // Update estado
+    
+        // Handle the file if a new one is provided
+        if (file != null && !file.isEmpty()) {
+            // Upload new file and update recursoMultimedia
+            S3ObjectDto s3ObjectDto = recursoMultimediaService.uploadFile(file);
+            S3Object s3Object = s3ObjectRepository.findById(s3ObjectDto.getS3ObjectId())
+                    .orElseThrow(() -> new RuntimeException("S3 Object no encontrado"));
+            tema.setRecursoMultimedia(s3Object);
+        }
+        // If no new file is provided, keep the existing recursoMultimedia
+    
+        // Save the updated tema
         temaRepository.save(tema);
     }
+    
 
     // Eliminar un tema
     public void deleteTema(Long idTema) {
