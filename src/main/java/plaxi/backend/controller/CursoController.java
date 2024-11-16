@@ -142,4 +142,18 @@ public class CursoController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
     }
+
+    @GetMapping("/recent")
+    public ResponseEntity<List<CursoDto>> getRecentCursos(@RequestParam(defaultValue = "10") int limit) {
+        logger.info("Solicitud para obtener los {} cursos más recientes", limit);
+        try {
+            // Llamada al servicio para obtener los cursos recientes
+            List<CursoDto> cursos = cursoService.getRecentCursos(limit);
+            logger.info("Cursos recientes obtenidos exitosamente, total: {}", cursos.size());
+            return ResponseEntity.ok(cursos);
+        } catch (Exception e) {
+            logger.error("Error al obtener los cursos recientes: {}", e.getMessage());
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+        }
+    }
 }

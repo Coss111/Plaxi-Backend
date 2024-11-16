@@ -1,21 +1,27 @@
 package plaxi.backend.controller;
 
-import org.springframework.beans.factory.annotation.Autowired; // Importa la anotación para inyectar dependencias automáticamente.
-import org.springframework.http.ResponseEntity; // Importa ResponseEntity para manejar las respuestas HTTP.
-import org.springframework.web.bind.annotation.*; // Importa las anotaciones necesarias para manejar las solicitudes HTTP en un controlador REST.
-import plaxi.backend.dto.InscripcionDto; // Importa el DTO que representa los datos necesarios para la inscripción.
-import plaxi.backend.dto.InscripcionResponseDto; // Importa el DTO que representa la respuesta de inscripción.
-import plaxi.backend.service.InscripcionService; // Importa el servicio encargado de la lógica de negocio de inscripciones.
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+import plaxi.backend.dto.CursoDto;
+import plaxi.backend.dto.InscripcionDto;
+import plaxi.backend.dto.InscripcionResponseDto;
+import plaxi.backend.service.CursoService;
+import plaxi.backend.service.InscripcionService;
 
-import java.util.List; // Importa la clase List, que se utilizará para manejar colecciones de inscripciones.
-import java.util.Optional; // Importa la clase Optional, que se utiliza para manejar valores que podrían ser nulos.
+import java.util.List;
+import java.util.Optional;
 
-@RestController // Indica que esta clase es un controlador REST.
-@RequestMapping("/api/inscripciones") // Define la ruta base para todas las solicitudes de este controlador (en este caso, "/api/inscripciones").
+@RestController
+@RequestMapping("/api/inscripciones")
 public class InscripcionController {
 
-    @Autowired // Inyecta el servicio InscripcionService para su uso en este controlador.
+    @Autowired
     private InscripcionService inscripcionService;
+
+    @Autowired
+    private CursoService cursoService;
 
     // Método para manejar las solicitudes GET a la ruta "/api/inscripciones" y obtener todas las inscripciones.
     @GetMapping
@@ -79,6 +85,26 @@ public class InscripcionController {
     public ResponseEntity<List<InscripcionResponseDto>> getInscripcionesByCursoId(@PathVariable Long cursoId) {
         List<InscripcionResponseDto> inscripciones = inscripcionService.getInscripcionesByCursoId(cursoId);
         return ResponseEntity.ok(inscripciones);
+    }
+
+    @GetMapping("/curso/{cursoId}/count")
+    public ResponseEntity<Long> countInscritosByCurso(@PathVariable Long cursoId) {
+        try {
+            long count = inscripcionService.countInscritosByCurso(cursoId);
+            return ResponseEntity.ok(count);
+        } catch (Exception e) {
+            return ResponseEntity.status(500).body(null);
+        }
+    }
+
+    @GetMapping("/populares")
+    public ResponseEntity<List<CursoDto>> getCursosPopulares(@RequestParam(defaultValue = "10") int limit) {
+        try {
+            List<CursoDto> cursosPopulares = inscripcionService.getCursosPopulares(limit);
+            return ResponseEntity.ok(cursosPopulares);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+        }
     }
 
 }

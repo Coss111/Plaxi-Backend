@@ -162,4 +162,24 @@ public class CursoService {
                 curso.getUsuarioCreador().getIdUsuario()
         )).collect(Collectors.toList());
     }
+
+    public List<CursoDto> getRecentCursos(int limit) {
+        List<Curso> cursos = cursoRepository.findAllByEstadoTrueOrderByFechaCreacionDesc();
+
+        // Limita los resultados a los cursos más recientes
+        return cursos.stream()
+                .limit(limit)
+                .map(curso -> new CursoDto(
+                        curso.getIdCurso(),
+                        curso.getNombre(),
+                        curso.getDescripcion(),
+                        curso.getDificultad(),
+                        curso.getPortada() != null ? curso.getPortada().getUrl() : null,
+                        curso.getEstado(),
+                        curso.getCategoria() != null ? curso.getCategoria().getIdCategoria() : null,
+                        curso.getUsuarioCreador() != null ? curso.getUsuarioCreador().getIdUsuario() : null
+                ))
+                .collect(Collectors.toList());
+    }
+
 }

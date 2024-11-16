@@ -16,4 +16,7 @@ public interface CursoRepository extends JpaRepository<Curso, Long> {
     List<Curso> findAllByEstadoTrue();
 
     List<Curso> findByUsuarioCreador_IdUsuarioAndEstadoTrue(Long usuarioId);
+
+    List<Curso> findAllByEstadoTrueOrderByFechaCreacionDesc();
+
 }

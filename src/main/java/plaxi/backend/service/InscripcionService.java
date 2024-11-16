@@ -2,6 +2,7 @@ package plaxi.backend.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import plaxi.backend.dto.CursoDto;
 import plaxi.backend.dto.InscripcionDto;
 
 import plaxi.backend.dto.InscripcionResponseDto;
@@ -133,6 +134,40 @@ public class InscripcionService {
             responseList.add(convertToDto(inscripcion));
         }
         return responseList;
+    }
+
+    public long countInscritosByCurso(Long cursoId) {
+        return inscripcionRepository.countByCurso_IdCursoAndEstadoInscripcionTrue(cursoId);
+    }
+
+    // Método para obtener los cursos más populares
+    public List<CursoDto> getCursosPopulares(int limit) {
+        List<Object[]> resultados = inscripcionRepository.findCursosPopulares();
+        List<CursoDto> cursosPopulares = new ArrayList<>();
+
+        for (int i = 0; i < Math.min(limit, resultados.size()); i++) {
+            Object[] fila = resultados.get(i);
+            Long cursoId = (Long) fila[0];
+            Long totalInscripciones = (Long) fila[1];
+
+            // Obtener detalles del curso por su ID
+            Curso curso = cursoRepository.findById(cursoId).orElse(null);
+            if (curso != null) {
+                cursosPopulares.add(new CursoDto(
+                        curso.getIdCurso(),
+                        curso.getNombre(),
+                        curso.getDescripcion(),
+                        curso.getDificultad(),
+                        curso.getPortada() != null ? curso.getPortada().getUrl() : null,
+                        curso.getEstado(),
+                        curso.getCategoria() != null ? curso.getCategoria().getIdCategoria() : null,
+                        curso.getUsuarioCreador() != null ? curso.getUsuarioCreador().getIdUsuario() : null,
+                        totalInscripciones // Añadimos el número de inscripciones
+                ));
+            }
+        }
+
+        return cursosPopulares;
     }
 
 
