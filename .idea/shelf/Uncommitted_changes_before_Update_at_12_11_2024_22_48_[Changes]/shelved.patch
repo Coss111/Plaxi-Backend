@@ -1,0 +1,249 @@
+Index: src/main/resources/application.yml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>server:\r\n  port: 8080\r\n\r\nspring:\r\n  application:\r\n    name: backend\r\n  datasource:\r\n    url: jdbc:postgresql://localhost:5433/PlatziDB\r\n    username: postgres\r\n    password: jose\r\n    driver-class-name: org.postgresql.Driver\r\n  jpa:\r\n    hibernate:\r\n      ddl-auto: update\r\n    show-sql: true\r\n    database-platform: org.hibernate.dialect.PostgreSQLDialect\r\n    properties:\r\n      hibernate:\r\n        format_sql: true\r\n        use_sql_comments: true\r\n  mail:\r\n    host: smtp.gmail.com\r\n    port: 587\r\n    username: asapsitterapp@gmail.com\r\n    password: ureeixyewmaiumra\r\n    properties:\r\n      mail:\r\n        smtp:\r\n          auth: true\r\n          starttls:\r\n            enable: true\r\n            required: true\r\n          ssl:\r\n            trust: smtp.gmail.com\r\n  servlet:\r\n    multipart:\r\n      max-file-size: 1GB\r\n      max-request-size: 1GB\r\nminio:\r\n  url: http://localhost:9000\r\n  access-key: minio\r\n  secret-key: minio1234\r\n  bucket-name: fotoperfil\r\n\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/resources/application.yml b/src/main/resources/application.yml
+--- a/src/main/resources/application.yml	(revision a1a92493d5de0cf4d4a48d27e42499e419c1f6bd)
++++ b/src/main/resources/application.yml	(date 1731466072267)
+@@ -5,9 +5,9 @@
+   application:
+     name: backend
+   datasource:
+-    url: jdbc:postgresql://localhost:5433/PlatziDB
++    url: jdbc:postgresql://localhost:5432/PlaxiDB
+     username: postgres
+-    password: jose
++    password: 12345
+     driver-class-name: org.postgresql.Driver
+   jpa:
+     hibernate:
+Index: src/main/java/plaxi/backend/controller/LeccionController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package plaxi.backend.controller;\r\n\r\nimport org.slf4j.Logger;\r\nimport org.slf4j.LoggerFactory;\r\nimport org.springframework.beans.factory.annotation.Autowired;\r\nimport org.springframework.data.domain.Page;\r\nimport org.springframework.http.HttpStatus;\r\nimport org.springframework.http.ResponseEntity;\r\nimport org.springframework.web.bind.annotation.*;\r\n\r\nimport plaxi.backend.dto.LeccionDto;\r\nimport plaxi.backend.dto.PaginadoDto;\r\nimport plaxi.backend.service.LeccionService;\r\n\r\n\r\n@RestController\r\n@RequestMapping(\"/api/leccion\")\r\npublic class LeccionController {\r\n\r\n    private static final Logger logger = LoggerFactory.getLogger(LeccionController.class);\r\n\r\n    @Autowired\r\n    private LeccionService leccionService;\r\n\r\n    // Obtener todas las lecciones\r\n    @GetMapping(\"/all\")\r\n    public ResponseEntity<Page<LeccionDto>> getAllLecciones(@RequestBody PaginadoDto paginadoDto) {\r\n        logger.info(\"Solicitud para obtener todas las lecciones\");\r\n        try {\r\n            Page<LeccionDto> lecciones = leccionService.getAllLecciones(paginadoDto);\r\n            logger.info(\"Lecciones obtenidas exitosamente\");\r\n            return ResponseEntity.ok(lecciones);\r\n        } catch (Exception e) {\r\n            logger.error(\"Error al obtener las lecciones: {}\", e.getMessage());\r\n            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);\r\n        }\r\n    }\r\n\r\n    // Obtener leccion por ID\r\n    @GetMapping(\"/{idLeccion}\")\r\n    public ResponseEntity<LeccionDto> getLeccionById(@PathVariable Long idLeccion) {\r\n        logger.info(\"Solicitud para obtener la leccion con ID: {}\", idLeccion);\r\n        try {\r\n            LeccionDto leccion = leccionService.getLeccion(idLeccion);\r\n            logger.info(\"Leccion obtenida exitosamente con ID: {}\", idLeccion);\r\n            return ResponseEntity.ok(leccion);\r\n        } catch (Exception e) {\r\n            logger.error(\"Error al obtener la leccion con ID: {} - {}\", idLeccion, e.getMessage());\r\n            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);\r\n        }\r\n    }\r\n\r\n    // Obtener lecciones por curso\r\n    @GetMapping(\"/curso/{cursoId}\")\r\n    public ResponseEntity<Page<LeccionDto>> getLeccionesByCurso(@PathVariable Long cursoId, @RequestBody PaginadoDto paginadoDto) {\r\n        logger.info(\"Solicitud para obtener lecciones del curso con ID: {}\", cursoId);\r\n        try {\r\n            Page<LeccionDto> lecciones = leccionService.getLeccionesByCurso(cursoId, paginadoDto);\r\n            logger.info(\"Lecciones obtenidas exitosamente para el curso con ID: {}\", cursoId);\r\n            return ResponseEntity.ok(lecciones);\r\n        } catch (Exception e) {\r\n            logger.error(\"Error al obtener las lecciones del curso con ID: {} - {}\", cursoId, e.getMessage());\r\n            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);\r\n        }\r\n    }\r\n\r\n    // Crear leccion\r\n    @PostMapping(\"/create\")\r\n    public ResponseEntity<String> createLeccion(@RequestBody LeccionDto leccionDto) {\r\n        logger.info(\"Solicitud para crear una nueva leccion\");\r\n        try {\r\n            leccionService.createLeccion(leccionDto);\r\n            logger.info(\"Leccion creada exitosamente.\");\r\n            return ResponseEntity.ok(\"Leccion creada exitosamente.\");\r\n\r\n        } catch (Exception e) {\r\n            logger.error(\"Error al crear la leccion: {}\", e.getMessage());\r\n            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);\r\n        }\r\n    }\r\n\r\n    // Actualizar leccion\r\n    @PutMapping(\"/update\")\r\n    public ResponseEntity<String> updateLeccion(@RequestBody LeccionDto leccionDto) {\r\n        logger.info(\"Solicitud para actualizar la leccion con ID: {}\", leccionDto.getIdLeccion());\r\n        try {\r\n            leccionService.updateLeccion(leccionDto);\r\n            logger.info(\"Leccion actualizada exitosamente.\");\r\n            return ResponseEntity.ok(\"Leccion actualizada exitosamente.\");\r\n        } catch (Exception e) {\r\n            logger.error(\"Error al actualizar la leccion con ID: {} - {}\", leccionDto.getIdLeccion(), e.getMessage());\r\n            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);\r\n        }\r\n    }\r\n\r\n    // Eliminar leccion\r\n    @DeleteMapping(\"/delete/{idLeccion}\")\r\n    public ResponseEntity<String> deleteLeccion(@PathVariable Long idLeccion) {\r\n        logger.info(\"Solicitud para eliminar la leccion con ID: {}\", idLeccion);\r\n        try {\r\n            leccionService.deleteLeccion(idLeccion);\r\n            logger.info(\"Leccion eliminada exitosamente.\");\r\n            return ResponseEntity.ok(\"Leccion eliminada exitosamente.\");\r\n        } catch (Exception e) {\r\n            logger.error(\"Error al eliminar la leccion con ID: {} - {}\", idLeccion, e.getMessage());\r\n            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);\r\n        }\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/plaxi/backend/controller/LeccionController.java b/src/main/java/plaxi/backend/controller/LeccionController.java
+--- a/src/main/java/plaxi/backend/controller/LeccionController.java	(revision a1a92493d5de0cf4d4a48d27e42499e419c1f6bd)
++++ b/src/main/java/plaxi/backend/controller/LeccionController.java	(date 1731466071433)
+@@ -50,10 +50,17 @@
+         }
+     }
+ 
+-    // Obtener lecciones por curso
+     @GetMapping("/curso/{cursoId}")
+-    public ResponseEntity<Page<LeccionDto>> getLeccionesByCurso(@PathVariable Long cursoId, @RequestBody PaginadoDto paginadoDto) {
++    public ResponseEntity<Page<LeccionDto>> getLeccionesByCurso(
++            @PathVariable Long cursoId,
++            @RequestParam int page, // Página solicitada
++            @RequestParam int size, // Tamaño de página
++            @RequestParam String sortBy, // Campo por el que ordenar
++            @RequestParam String sortDir) { // Dirección de orden (ascendente o descendente)
+         logger.info("Solicitud para obtener lecciones del curso con ID: {}", cursoId);
++        
++        PaginadoDto paginadoDto = new PaginadoDto(page, size, sortBy, sortDir);
++        
+         try {
+             Page<LeccionDto> lecciones = leccionService.getLeccionesByCurso(cursoId, paginadoDto);
+             logger.info("Lecciones obtenidas exitosamente para el curso con ID: {}", cursoId);
+@@ -64,6 +71,7 @@
+         }
+     }
+ 
++
+     // Crear leccion
+     @PostMapping("/create")
+     public ResponseEntity<String> createLeccion(@RequestBody LeccionDto leccionDto) {
+Index: target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>D:\\NO ELIMINAR\\Escritorio\\Cato\\9no semestre\\Taller de Desarrollo de Software\\plaxi backend\\Plaxi-Backend\\src\\main\\java\\plaxi\\backend\\BackendApplication.java\r\nD:\\NO ELIMINAR\\Escritorio\\Cato\\9no semestre\\Taller de Desarrollo de Software\\plaxi backend\\Plaxi-Backend\\src\\main\\java\\plaxi\\backend\\config\\CorsConfig.java\r\nD:\\NO ELIMINAR\\Escritorio\\Cato\\9no semestre\\Taller de Desarrollo de Software\\plaxi backend\\Plaxi-Backend\\src\\main\\java\\plaxi\\backend\\config\\MinioConfig.java\r\nD:\\NO ELIMINAR\\Escritorio\\Cato\\9no semestre\\Taller de Desarrollo de Software\\plaxi backend\\Plaxi-Backend\\src\\main\\java\\plaxi\\backend\\controller\\AuthController.java\r\nD:\\NO ELIMINAR\\Escritorio\\Cato\\9no semestre\\Taller de Desarrollo de Software\\plaxi backend\\Plaxi-Backend\\src\\main\\java\\plaxi\\backend\\controller\\CursoController.java\r\nD:\\NO ELIMINAR\\Escritorio\\Cato\\9no semestre\\Taller de Desarrollo de Software\\plaxi backend\\Plaxi-Backend\\src\\main\\java\\plaxi\\backend\\controller\\MinioController.java\r\nD:\\NO ELIMINAR\\Escritorio\\Cato\\9no semestre\\Taller de Desarrollo de Software\\plaxi backend\\Plaxi-Backend\\src\\main\\java\\plaxi\\backend\\controller\\PerfilController.java\r\nD:\\NO ELIMINAR\\Escritorio\\Cato\\9no semestre\\Taller de Desarrollo de Software\\plaxi backend\\Plaxi-Backend\\src\\main\\java\\plaxi\\backend\\controller\\UsuarioController.java\r\nD:\\NO ELIMINAR\\Escritorio\\Cato\\9no semestre\\Taller de Desarrollo de Software\\plaxi backend\\Plaxi-Backend\\src\\main\\java\\plaxi\\backend\\dto\\ActualizarCursoDto.java\r\nD:\\NO ELIMINAR\\Escritorio\\Cato\\9no semestre\\Taller de Desarrollo de Software\\plaxi backend\\Plaxi-Backend\\src\\main\\java\\plaxi\\backend\\dto\\ActualizarPerfilDto.java\r\nD:\\NO ELIMINAR\\Escritorio\\Cato\\9no semestre\\Taller de Desarrollo de Software\\plaxi backend\\Plaxi-Backend\\src\\main\\java\\plaxi\\backend\\dto\\CategoriaDto.java\r\nD:\\NO ELIMINAR\\Escritorio\\Cato\\9no semestre\\Taller de Desarrollo de Software\\plaxi backend\\Plaxi-Backend\\src\\main\\java\\plaxi\\backend\\dto\\ConocimientoPrevioDto.java\r\nD:\\NO ELIMINAR\\Escritorio\\Cato\\9no semestre\\Taller de Desarrollo de Software\\plaxi backend\\Plaxi-Backend\\src\\main\\java\\plaxi\\backend\\dto\\CursoDto.java\r\nD:\\NO ELIMINAR\\Escritorio\\Cato\\9no semestre\\Taller de Desarrollo de Software\\plaxi backend\\Plaxi-Backend\\src\\main\\java\\plaxi\\backend\\dto\\LeccionDto.java\r\nD:\\NO ELIMINAR\\Escritorio\\Cato\\9no semestre\\Taller de Desarrollo de Software\\plaxi backend\\Plaxi-Backend\\src\\main\\java\\plaxi\\backend\\dto\\NewFileDto.java\r\nD:\\NO ELIMINAR\\Escritorio\\Cato\\9no semestre\\Taller de Desarrollo de Software\\plaxi backend\\Plaxi-Backend\\src\\main\\java\\plaxi\\backend\\dto\\PerfilDto.java\r\nD:\\NO ELIMINAR\\Escritorio\\Cato\\9no semestre\\Taller de Desarrollo de Software\\plaxi backend\\Plaxi-Backend\\src\\main\\java\\plaxi\\backend\\dto\\PersonaDto.java\r\nD:\\NO ELIMINAR\\Escritorio\\Cato\\9no semestre\\Taller de Desarrollo de Software\\plaxi backend\\Plaxi-Backend\\src\\main\\java\\plaxi\\backend\\dto\\RegisterRequestDto.java\r\nD:\\NO ELIMINAR\\Escritorio\\Cato\\9no semestre\\Taller de Desarrollo de Software\\plaxi backend\\Plaxi-Backend\\src\\main\\java\\plaxi\\backend\\dto\\ResponseDto.java\r\nD:\\NO ELIMINAR\\Escritorio\\Cato\\9no semestre\\Taller de Desarrollo de Software\\plaxi backend\\Plaxi-Backend\\src\\main\\java\\plaxi\\backend\\dto\\RolDto.java\r\nD:\\NO ELIMINAR\\Escritorio\\Cato\\9no semestre\\Taller de Desarrollo de Software\\plaxi backend\\Plaxi-Backend\\src\\main\\java\\plaxi\\backend\\dto\\S3ObjectDto.java\r\nD:\\NO ELIMINAR\\Escritorio\\Cato\\9no semestre\\Taller de Desarrollo de Software\\plaxi backend\\Plaxi-Backend\\src\\main\\java\\plaxi\\backend\\dto\\TemaDto.java\r\nD:\\NO ELIMINAR\\Escritorio\\Cato\\9no semestre\\Taller de Desarrollo de Software\\plaxi backend\\Plaxi-Backend\\src\\main\\java\\plaxi\\backend\\dto\\UsuarioDto.java\r\nD:\\NO ELIMINAR\\Escritorio\\Cato\\9no semestre\\Taller de Desarrollo de Software\\plaxi backend\\Plaxi-Backend\\src\\main\\java\\plaxi\\backend\\entity\\Categoria.java\r\nD:\\NO ELIMINAR\\Escritorio\\Cato\\9no semestre\\Taller de Desarrollo de Software\\plaxi backend\\Plaxi-Backend\\src\\main\\java\\plaxi\\backend\\entity\\ConocimientoPrevio.java\r\nD:\\NO ELIMINAR\\Escritorio\\Cato\\9no semestre\\Taller de Desarrollo de Software\\plaxi backend\\Plaxi-Backend\\src\\main\\java\\plaxi\\backend\\entity\\Curso.java\r\nD:\\NO ELIMINAR\\Escritorio\\Cato\\9no semestre\\Taller de Desarrollo de Software\\plaxi backend\\Plaxi-Backend\\src\\main\\java\\plaxi\\backend\\entity\\Leccion.java\r\nD:\\NO ELIMINAR\\Escritorio\\Cato\\9no semestre\\Taller de Desarrollo de Software\\plaxi backend\\Plaxi-Backend\\src\\main\\java\\plaxi\\backend\\entity\\Persona.java\r\nD:\\NO ELIMINAR\\Escritorio\\Cato\\9no semestre\\Taller de Desarrollo de Software\\plaxi backend\\Plaxi-Backend\\src\\main\\java\\plaxi\\backend\\entity\\Rol.java\r\nD:\\NO ELIMINAR\\Escritorio\\Cato\\9no semestre\\Taller de Desarrollo de Software\\plaxi backend\\Plaxi-Backend\\src\\main\\java\\plaxi\\backend\\entity\\S3Object.java\r\nD:\\NO ELIMINAR\\Escritorio\\Cato\\9no semestre\\Taller de Desarrollo de Software\\plaxi backend\\Plaxi-Backend\\src\\main\\java\\plaxi\\backend\\entity\\Tema.java\r\nD:\\NO ELIMINAR\\Escritorio\\Cato\\9no semestre\\Taller de Desarrollo de Software\\plaxi backend\\Plaxi-Backend\\src\\main\\java\\plaxi\\backend\\entity\\Usuario.java\r\nD:\\NO ELIMINAR\\Escritorio\\Cato\\9no semestre\\Taller de Desarrollo de Software\\plaxi backend\\Plaxi-Backend\\src\\main\\java\\plaxi\\backend\\repository\\CategoriaRepository.java\r\nD:\\NO ELIMINAR\\Escritorio\\Cato\\9no semestre\\Taller de Desarrollo de Software\\plaxi backend\\Plaxi-Backend\\src\\main\\java\\plaxi\\backend\\repository\\ConocimientoPrevioRepository.java\r\nD:\\NO ELIMINAR\\Escritorio\\Cato\\9no semestre\\Taller de Desarrollo de Software\\plaxi backend\\Plaxi-Backend\\src\\main\\java\\plaxi\\backend\\repository\\CursoRepository.java\r\nD:\\NO ELIMINAR\\Escritorio\\Cato\\9no semestre\\Taller de Desarrollo de Software\\plaxi backend\\Plaxi-Backend\\src\\main\\java\\plaxi\\backend\\repository\\LeccionRepository.java\r\nD:\\NO ELIMINAR\\Escritorio\\Cato\\9no semestre\\Taller de Desarrollo de Software\\plaxi backend\\Plaxi-Backend\\src\\main\\java\\plaxi\\backend\\repository\\PersonaRepository.java\r\nD:\\NO ELIMINAR\\Escritorio\\Cato\\9no semestre\\Taller de Desarrollo de Software\\plaxi backend\\Plaxi-Backend\\src\\main\\java\\plaxi\\backend\\repository\\RolRepository.java\r\nD:\\NO ELIMINAR\\Escritorio\\Cato\\9no semestre\\Taller de Desarrollo de Software\\plaxi backend\\Plaxi-Backend\\src\\main\\java\\plaxi\\backend\\repository\\S3ObjectRepository.java\r\nD:\\NO ELIMINAR\\Escritorio\\Cato\\9no semestre\\Taller de Desarrollo de Software\\plaxi backend\\Plaxi-Backend\\src\\main\\java\\plaxi\\backend\\repository\\TemaRepository.java\r\nD:\\NO ELIMINAR\\Escritorio\\Cato\\9no semestre\\Taller de Desarrollo de Software\\plaxi backend\\Plaxi-Backend\\src\\main\\java\\plaxi\\backend\\repository\\UsuarioRepository.java\r\nD:\\NO ELIMINAR\\Escritorio\\Cato\\9no semestre\\Taller de Desarrollo de Software\\plaxi backend\\Plaxi-Backend\\src\\main\\java\\plaxi\\backend\\service\\AuthService.java\r\nD:\\NO ELIMINAR\\Escritorio\\Cato\\9no semestre\\Taller de Desarrollo de Software\\plaxi backend\\Plaxi-Backend\\src\\main\\java\\plaxi\\backend\\service\\CursoService.java\r\nD:\\NO ELIMINAR\\Escritorio\\Cato\\9no semestre\\Taller de Desarrollo de Software\\plaxi backend\\Plaxi-Backend\\src\\main\\java\\plaxi\\backend\\service\\MinioService.java\r\nD:\\NO ELIMINAR\\Escritorio\\Cato\\9no semestre\\Taller de Desarrollo de Software\\plaxi backend\\Plaxi-Backend\\src\\main\\java\\plaxi\\backend\\service\\PasswordGenerator.java\r\nD:\\NO ELIMINAR\\Escritorio\\Cato\\9no semestre\\Taller de Desarrollo de Software\\plaxi backend\\Plaxi-Backend\\src\\main\\java\\plaxi\\backend\\service\\PerfilService.java\r\nD:\\NO ELIMINAR\\Escritorio\\Cato\\9no semestre\\Taller de Desarrollo de Software\\plaxi backend\\Plaxi-Backend\\src\\main\\java\\plaxi\\backend\\service\\UsuarioService.java\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst b/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst
+--- a/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst	(revision a1a92493d5de0cf4d4a48d27e42499e419c1f6bd)
++++ b/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst	(date 1731466072672)
+@@ -1,47 +1,61 @@
+-D:\NO ELIMINAR\Escritorio\Cato\9no semestre\Taller de Desarrollo de Software\plaxi backend\Plaxi-Backend\src\main\java\plaxi\backend\BackendApplication.java
+-D:\NO ELIMINAR\Escritorio\Cato\9no semestre\Taller de Desarrollo de Software\plaxi backend\Plaxi-Backend\src\main\java\plaxi\backend\config\CorsConfig.java
+-D:\NO ELIMINAR\Escritorio\Cato\9no semestre\Taller de Desarrollo de Software\plaxi backend\Plaxi-Backend\src\main\java\plaxi\backend\config\MinioConfig.java
+-D:\NO ELIMINAR\Escritorio\Cato\9no semestre\Taller de Desarrollo de Software\plaxi backend\Plaxi-Backend\src\main\java\plaxi\backend\controller\AuthController.java
+-D:\NO ELIMINAR\Escritorio\Cato\9no semestre\Taller de Desarrollo de Software\plaxi backend\Plaxi-Backend\src\main\java\plaxi\backend\controller\CursoController.java
+-D:\NO ELIMINAR\Escritorio\Cato\9no semestre\Taller de Desarrollo de Software\plaxi backend\Plaxi-Backend\src\main\java\plaxi\backend\controller\MinioController.java
+-D:\NO ELIMINAR\Escritorio\Cato\9no semestre\Taller de Desarrollo de Software\plaxi backend\Plaxi-Backend\src\main\java\plaxi\backend\controller\PerfilController.java
+-D:\NO ELIMINAR\Escritorio\Cato\9no semestre\Taller de Desarrollo de Software\plaxi backend\Plaxi-Backend\src\main\java\plaxi\backend\controller\UsuarioController.java
+-D:\NO ELIMINAR\Escritorio\Cato\9no semestre\Taller de Desarrollo de Software\plaxi backend\Plaxi-Backend\src\main\java\plaxi\backend\dto\ActualizarCursoDto.java
+-D:\NO ELIMINAR\Escritorio\Cato\9no semestre\Taller de Desarrollo de Software\plaxi backend\Plaxi-Backend\src\main\java\plaxi\backend\dto\ActualizarPerfilDto.java
+-D:\NO ELIMINAR\Escritorio\Cato\9no semestre\Taller de Desarrollo de Software\plaxi backend\Plaxi-Backend\src\main\java\plaxi\backend\dto\CategoriaDto.java
+-D:\NO ELIMINAR\Escritorio\Cato\9no semestre\Taller de Desarrollo de Software\plaxi backend\Plaxi-Backend\src\main\java\plaxi\backend\dto\ConocimientoPrevioDto.java
+-D:\NO ELIMINAR\Escritorio\Cato\9no semestre\Taller de Desarrollo de Software\plaxi backend\Plaxi-Backend\src\main\java\plaxi\backend\dto\CursoDto.java
+-D:\NO ELIMINAR\Escritorio\Cato\9no semestre\Taller de Desarrollo de Software\plaxi backend\Plaxi-Backend\src\main\java\plaxi\backend\dto\LeccionDto.java
+-D:\NO ELIMINAR\Escritorio\Cato\9no semestre\Taller de Desarrollo de Software\plaxi backend\Plaxi-Backend\src\main\java\plaxi\backend\dto\NewFileDto.java
+-D:\NO ELIMINAR\Escritorio\Cato\9no semestre\Taller de Desarrollo de Software\plaxi backend\Plaxi-Backend\src\main\java\plaxi\backend\dto\PerfilDto.java
+-D:\NO ELIMINAR\Escritorio\Cato\9no semestre\Taller de Desarrollo de Software\plaxi backend\Plaxi-Backend\src\main\java\plaxi\backend\dto\PersonaDto.java
+-D:\NO ELIMINAR\Escritorio\Cato\9no semestre\Taller de Desarrollo de Software\plaxi backend\Plaxi-Backend\src\main\java\plaxi\backend\dto\RegisterRequestDto.java
+-D:\NO ELIMINAR\Escritorio\Cato\9no semestre\Taller de Desarrollo de Software\plaxi backend\Plaxi-Backend\src\main\java\plaxi\backend\dto\ResponseDto.java
+-D:\NO ELIMINAR\Escritorio\Cato\9no semestre\Taller de Desarrollo de Software\plaxi backend\Plaxi-Backend\src\main\java\plaxi\backend\dto\RolDto.java
+-D:\NO ELIMINAR\Escritorio\Cato\9no semestre\Taller de Desarrollo de Software\plaxi backend\Plaxi-Backend\src\main\java\plaxi\backend\dto\S3ObjectDto.java
+-D:\NO ELIMINAR\Escritorio\Cato\9no semestre\Taller de Desarrollo de Software\plaxi backend\Plaxi-Backend\src\main\java\plaxi\backend\dto\TemaDto.java
+-D:\NO ELIMINAR\Escritorio\Cato\9no semestre\Taller de Desarrollo de Software\plaxi backend\Plaxi-Backend\src\main\java\plaxi\backend\dto\UsuarioDto.java
+-D:\NO ELIMINAR\Escritorio\Cato\9no semestre\Taller de Desarrollo de Software\plaxi backend\Plaxi-Backend\src\main\java\plaxi\backend\entity\Categoria.java
+-D:\NO ELIMINAR\Escritorio\Cato\9no semestre\Taller de Desarrollo de Software\plaxi backend\Plaxi-Backend\src\main\java\plaxi\backend\entity\ConocimientoPrevio.java
+-D:\NO ELIMINAR\Escritorio\Cato\9no semestre\Taller de Desarrollo de Software\plaxi backend\Plaxi-Backend\src\main\java\plaxi\backend\entity\Curso.java
+-D:\NO ELIMINAR\Escritorio\Cato\9no semestre\Taller de Desarrollo de Software\plaxi backend\Plaxi-Backend\src\main\java\plaxi\backend\entity\Leccion.java
+-D:\NO ELIMINAR\Escritorio\Cato\9no semestre\Taller de Desarrollo de Software\plaxi backend\Plaxi-Backend\src\main\java\plaxi\backend\entity\Persona.java
+-D:\NO ELIMINAR\Escritorio\Cato\9no semestre\Taller de Desarrollo de Software\plaxi backend\Plaxi-Backend\src\main\java\plaxi\backend\entity\Rol.java
+-D:\NO ELIMINAR\Escritorio\Cato\9no semestre\Taller de Desarrollo de Software\plaxi backend\Plaxi-Backend\src\main\java\plaxi\backend\entity\S3Object.java
+-D:\NO ELIMINAR\Escritorio\Cato\9no semestre\Taller de Desarrollo de Software\plaxi backend\Plaxi-Backend\src\main\java\plaxi\backend\entity\Tema.java
+-D:\NO ELIMINAR\Escritorio\Cato\9no semestre\Taller de Desarrollo de Software\plaxi backend\Plaxi-Backend\src\main\java\plaxi\backend\entity\Usuario.java
+-D:\NO ELIMINAR\Escritorio\Cato\9no semestre\Taller de Desarrollo de Software\plaxi backend\Plaxi-Backend\src\main\java\plaxi\backend\repository\CategoriaRepository.java
+-D:\NO ELIMINAR\Escritorio\Cato\9no semestre\Taller de Desarrollo de Software\plaxi backend\Plaxi-Backend\src\main\java\plaxi\backend\repository\ConocimientoPrevioRepository.java
+-D:\NO ELIMINAR\Escritorio\Cato\9no semestre\Taller de Desarrollo de Software\plaxi backend\Plaxi-Backend\src\main\java\plaxi\backend\repository\CursoRepository.java
+-D:\NO ELIMINAR\Escritorio\Cato\9no semestre\Taller de Desarrollo de Software\plaxi backend\Plaxi-Backend\src\main\java\plaxi\backend\repository\LeccionRepository.java
+-D:\NO ELIMINAR\Escritorio\Cato\9no semestre\Taller de Desarrollo de Software\plaxi backend\Plaxi-Backend\src\main\java\plaxi\backend\repository\PersonaRepository.java
+-D:\NO ELIMINAR\Escritorio\Cato\9no semestre\Taller de Desarrollo de Software\plaxi backend\Plaxi-Backend\src\main\java\plaxi\backend\repository\RolRepository.java
+-D:\NO ELIMINAR\Escritorio\Cato\9no semestre\Taller de Desarrollo de Software\plaxi backend\Plaxi-Backend\src\main\java\plaxi\backend\repository\S3ObjectRepository.java
+-D:\NO ELIMINAR\Escritorio\Cato\9no semestre\Taller de Desarrollo de Software\plaxi backend\Plaxi-Backend\src\main\java\plaxi\backend\repository\TemaRepository.java
+-D:\NO ELIMINAR\Escritorio\Cato\9no semestre\Taller de Desarrollo de Software\plaxi backend\Plaxi-Backend\src\main\java\plaxi\backend\repository\UsuarioRepository.java
+-D:\NO ELIMINAR\Escritorio\Cato\9no semestre\Taller de Desarrollo de Software\plaxi backend\Plaxi-Backend\src\main\java\plaxi\backend\service\AuthService.java
+-D:\NO ELIMINAR\Escritorio\Cato\9no semestre\Taller de Desarrollo de Software\plaxi backend\Plaxi-Backend\src\main\java\plaxi\backend\service\CursoService.java
+-D:\NO ELIMINAR\Escritorio\Cato\9no semestre\Taller de Desarrollo de Software\plaxi backend\Plaxi-Backend\src\main\java\plaxi\backend\service\MinioService.java
+-D:\NO ELIMINAR\Escritorio\Cato\9no semestre\Taller de Desarrollo de Software\plaxi backend\Plaxi-Backend\src\main\java\plaxi\backend\service\PasswordGenerator.java
+-D:\NO ELIMINAR\Escritorio\Cato\9no semestre\Taller de Desarrollo de Software\plaxi backend\Plaxi-Backend\src\main\java\plaxi\backend\service\PerfilService.java
+-D:\NO ELIMINAR\Escritorio\Cato\9no semestre\Taller de Desarrollo de Software\plaxi backend\Plaxi-Backend\src\main\java\plaxi\backend\service\UsuarioService.java
++D:\Universidad\8tavo\Taller de desarrollo\Proyecto Plaxi\Plaxi-Backend\src\main\java\plaxi\backend\BackendApplication.java
++D:\Universidad\8tavo\Taller de desarrollo\Proyecto Plaxi\Plaxi-Backend\src\main\java\plaxi\backend\config\CorsConfig.java
++D:\Universidad\8tavo\Taller de desarrollo\Proyecto Plaxi\Plaxi-Backend\src\main\java\plaxi\backend\config\MinioConfig.java
++D:\Universidad\8tavo\Taller de desarrollo\Proyecto Plaxi\Plaxi-Backend\src\main\java\plaxi\backend\controller\AuthController.java
++D:\Universidad\8tavo\Taller de desarrollo\Proyecto Plaxi\Plaxi-Backend\src\main\java\plaxi\backend\controller\CategoriaController.java
++D:\Universidad\8tavo\Taller de desarrollo\Proyecto Plaxi\Plaxi-Backend\src\main\java\plaxi\backend\controller\CursoController.java
++D:\Universidad\8tavo\Taller de desarrollo\Proyecto Plaxi\Plaxi-Backend\src\main\java\plaxi\backend\controller\GmailGerenciaController.java
++D:\Universidad\8tavo\Taller de desarrollo\Proyecto Plaxi\Plaxi-Backend\src\main\java\plaxi\backend\controller\InscripcionController.java
++D:\Universidad\8tavo\Taller de desarrollo\Proyecto Plaxi\Plaxi-Backend\src\main\java\plaxi\backend\controller\LeccionController.java
++D:\Universidad\8tavo\Taller de desarrollo\Proyecto Plaxi\Plaxi-Backend\src\main\java\plaxi\backend\controller\MinioController.java
++D:\Universidad\8tavo\Taller de desarrollo\Proyecto Plaxi\Plaxi-Backend\src\main\java\plaxi\backend\controller\PerfilController.java
++D:\Universidad\8tavo\Taller de desarrollo\Proyecto Plaxi\Plaxi-Backend\src\main\java\plaxi\backend\controller\TemaController.java
++D:\Universidad\8tavo\Taller de desarrollo\Proyecto Plaxi\Plaxi-Backend\src\main\java\plaxi\backend\dto\ActualizarCursoDto.java
++D:\Universidad\8tavo\Taller de desarrollo\Proyecto Plaxi\Plaxi-Backend\src\main\java\plaxi\backend\dto\ActualizarPerfilDto.java
++D:\Universidad\8tavo\Taller de desarrollo\Proyecto Plaxi\Plaxi-Backend\src\main\java\plaxi\backend\dto\CategoriaDto.java
++D:\Universidad\8tavo\Taller de desarrollo\Proyecto Plaxi\Plaxi-Backend\src\main\java\plaxi\backend\dto\ConocimientoPrevioDto.java
++D:\Universidad\8tavo\Taller de desarrollo\Proyecto Plaxi\Plaxi-Backend\src\main\java\plaxi\backend\dto\CursoDto.java
++D:\Universidad\8tavo\Taller de desarrollo\Proyecto Plaxi\Plaxi-Backend\src\main\java\plaxi\backend\dto\InscripcionDto.java
++D:\Universidad\8tavo\Taller de desarrollo\Proyecto Plaxi\Plaxi-Backend\src\main\java\plaxi\backend\dto\InscripcionResponseDto.java
++D:\Universidad\8tavo\Taller de desarrollo\Proyecto Plaxi\Plaxi-Backend\src\main\java\plaxi\backend\dto\LeccionDto.java
++D:\Universidad\8tavo\Taller de desarrollo\Proyecto Plaxi\Plaxi-Backend\src\main\java\plaxi\backend\dto\NewFileDto.java
++D:\Universidad\8tavo\Taller de desarrollo\Proyecto Plaxi\Plaxi-Backend\src\main\java\plaxi\backend\dto\PaginadoDto.java
++D:\Universidad\8tavo\Taller de desarrollo\Proyecto Plaxi\Plaxi-Backend\src\main\java\plaxi\backend\dto\PerfilDto.java
++D:\Universidad\8tavo\Taller de desarrollo\Proyecto Plaxi\Plaxi-Backend\src\main\java\plaxi\backend\dto\PersonaDto.java
++D:\Universidad\8tavo\Taller de desarrollo\Proyecto Plaxi\Plaxi-Backend\src\main\java\plaxi\backend\dto\RegisterRequestDto.java
++D:\Universidad\8tavo\Taller de desarrollo\Proyecto Plaxi\Plaxi-Backend\src\main\java\plaxi\backend\dto\ResponseDto.java
++D:\Universidad\8tavo\Taller de desarrollo\Proyecto Plaxi\Plaxi-Backend\src\main\java\plaxi\backend\dto\RolDto.java
++D:\Universidad\8tavo\Taller de desarrollo\Proyecto Plaxi\Plaxi-Backend\src\main\java\plaxi\backend\dto\S3ObjectDto.java
++D:\Universidad\8tavo\Taller de desarrollo\Proyecto Plaxi\Plaxi-Backend\src\main\java\plaxi\backend\dto\TemaDto.java
++D:\Universidad\8tavo\Taller de desarrollo\Proyecto Plaxi\Plaxi-Backend\src\main\java\plaxi\backend\dto\UsuarioDto.java
++D:\Universidad\8tavo\Taller de desarrollo\Proyecto Plaxi\Plaxi-Backend\src\main\java\plaxi\backend\entity\Categoria.java
++D:\Universidad\8tavo\Taller de desarrollo\Proyecto Plaxi\Plaxi-Backend\src\main\java\plaxi\backend\entity\ConocimientoPrevio.java
++D:\Universidad\8tavo\Taller de desarrollo\Proyecto Plaxi\Plaxi-Backend\src\main\java\plaxi\backend\entity\Curso.java
++D:\Universidad\8tavo\Taller de desarrollo\Proyecto Plaxi\Plaxi-Backend\src\main\java\plaxi\backend\entity\Inscripcion.java
++D:\Universidad\8tavo\Taller de desarrollo\Proyecto Plaxi\Plaxi-Backend\src\main\java\plaxi\backend\entity\Leccion.java
++D:\Universidad\8tavo\Taller de desarrollo\Proyecto Plaxi\Plaxi-Backend\src\main\java\plaxi\backend\entity\Persona.java
++D:\Universidad\8tavo\Taller de desarrollo\Proyecto Plaxi\Plaxi-Backend\src\main\java\plaxi\backend\entity\Rol.java
++D:\Universidad\8tavo\Taller de desarrollo\Proyecto Plaxi\Plaxi-Backend\src\main\java\plaxi\backend\entity\S3Object.java
++D:\Universidad\8tavo\Taller de desarrollo\Proyecto Plaxi\Plaxi-Backend\src\main\java\plaxi\backend\entity\Tema.java
++D:\Universidad\8tavo\Taller de desarrollo\Proyecto Plaxi\Plaxi-Backend\src\main\java\plaxi\backend\entity\Usuario.java
++D:\Universidad\8tavo\Taller de desarrollo\Proyecto Plaxi\Plaxi-Backend\src\main\java\plaxi\backend\repository\CategoriaRepository.java
++D:\Universidad\8tavo\Taller de desarrollo\Proyecto Plaxi\Plaxi-Backend\src\main\java\plaxi\backend\repository\ConocimientoPrevioRepository.java
++D:\Universidad\8tavo\Taller de desarrollo\Proyecto Plaxi\Plaxi-Backend\src\main\java\plaxi\backend\repository\CursoRepository.java
++D:\Universidad\8tavo\Taller de desarrollo\Proyecto Plaxi\Plaxi-Backend\src\main\java\plaxi\backend\repository\InscripcionRepository.java
++D:\Universidad\8tavo\Taller de desarrollo\Proyecto Plaxi\Plaxi-Backend\src\main\java\plaxi\backend\repository\LeccionRepository.java
++D:\Universidad\8tavo\Taller de desarrollo\Proyecto Plaxi\Plaxi-Backend\src\main\java\plaxi\backend\repository\PersonaRepository.java
++D:\Universidad\8tavo\Taller de desarrollo\Proyecto Plaxi\Plaxi-Backend\src\main\java\plaxi\backend\repository\RolRepository.java
++D:\Universidad\8tavo\Taller de desarrollo\Proyecto Plaxi\Plaxi-Backend\src\main\java\plaxi\backend\repository\S3ObjectRepository.java
++D:\Universidad\8tavo\Taller de desarrollo\Proyecto Plaxi\Plaxi-Backend\src\main\java\plaxi\backend\repository\TemaRepository.java
++D:\Universidad\8tavo\Taller de desarrollo\Proyecto Plaxi\Plaxi-Backend\src\main\java\plaxi\backend\repository\UsuarioRepository.java
++D:\Universidad\8tavo\Taller de desarrollo\Proyecto Plaxi\Plaxi-Backend\src\main\java\plaxi\backend\service\AuthService.java
++D:\Universidad\8tavo\Taller de desarrollo\Proyecto Plaxi\Plaxi-Backend\src\main\java\plaxi\backend\service\CategoriaService.java
++D:\Universidad\8tavo\Taller de desarrollo\Proyecto Plaxi\Plaxi-Backend\src\main\java\plaxi\backend\service\CursoService.java
++D:\Universidad\8tavo\Taller de desarrollo\Proyecto Plaxi\Plaxi-Backend\src\main\java\plaxi\backend\service\GmailGerenciaServices.java
++D:\Universidad\8tavo\Taller de desarrollo\Proyecto Plaxi\Plaxi-Backend\src\main\java\plaxi\backend\service\InscripcionService.java
++D:\Universidad\8tavo\Taller de desarrollo\Proyecto Plaxi\Plaxi-Backend\src\main\java\plaxi\backend\service\LeccionService.java
++D:\Universidad\8tavo\Taller de desarrollo\Proyecto Plaxi\Plaxi-Backend\src\main\java\plaxi\backend\service\MinioService.java
++D:\Universidad\8tavo\Taller de desarrollo\Proyecto Plaxi\Plaxi-Backend\src\main\java\plaxi\backend\service\PasswordGenerator.java
++D:\Universidad\8tavo\Taller de desarrollo\Proyecto Plaxi\Plaxi-Backend\src\main\java\plaxi\backend\service\PerfilService.java
++D:\Universidad\8tavo\Taller de desarrollo\Proyecto Plaxi\Plaxi-Backend\src\main\java\plaxi\backend\service\TemaService.java
++D:\Universidad\8tavo\Taller de desarrollo\Proyecto Plaxi\Plaxi-Backend\src\main\java\plaxi\backend\service\UsuarioService.java
+Index: target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>D:\\NO ELIMINAR\\Escritorio\\Cato\\9no semestre\\Taller de Desarrollo de Software\\plaxi backend\\Plaxi-Backend\\src\\test\\java\\plaxi\\backend\\BackendApplicationTests.java\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst b/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst
+--- a/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst	(revision a1a92493d5de0cf4d4a48d27e42499e419c1f6bd)
++++ b/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst	(date 1731466072673)
+@@ -1,1 +1,1 @@
+-D:\NO ELIMINAR\Escritorio\Cato\9no semestre\Taller de Desarrollo de Software\plaxi backend\Plaxi-Backend\src\test\java\plaxi\backend\BackendApplicationTests.java
++D:\Universidad\8tavo\Taller de desarrollo\Proyecto Plaxi\Plaxi-Backend\src\test\java\plaxi\backend\BackendApplicationTests.java
+Index: .vscode/settings.json
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>{\r\n    \"java.configuration.updateBuildConfiguration\": \"automatic\"\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.vscode/settings.json b/.vscode/settings.json
+--- a/.vscode/settings.json	(revision a1a92493d5de0cf4d4a48d27e42499e419c1f6bd)
++++ b/.vscode/settings.json	(date 1731466071303)
+@@ -1,3 +1,4 @@
+ {
+-    "java.configuration.updateBuildConfiguration": "automatic"
++    "java.configuration.updateBuildConfiguration": "automatic",
++    "java.compile.nullAnalysis.mode": "automatic"
+ }
+\ No newline at end of file
+Index: target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>plaxi\\backend\\dto\\ActualizarPerfilDto.class\r\nplaxi\\backend\\dto\\NewFileDto.class\r\nplaxi\\backend\\service\\UsuarioService.class\r\nplaxi\\backend\\entity\\Categoria.class\r\nplaxi\\backend\\dto\\RegisterRequestDto.class\r\nplaxi\\backend\\repository\\CursoRepository.class\r\nplaxi\\backend\\dto\\RolDto.class\r\nplaxi\\backend\\service\\AuthService.class\r\nplaxi\\backend\\config\\MinioConfig.class\r\nplaxi\\backend\\repository\\ConocimientoPrevioRepository.class\r\nplaxi\\backend\\entity\\Usuario.class\r\nplaxi\\backend\\dto\\PersonaDto.class\r\nplaxi\\backend\\config\\CorsConfig.class\r\nplaxi\\backend\\dto\\CategoriaDto.class\r\nplaxi\\backend\\entity\\ConocimientoPrevio.class\r\nplaxi\\backend\\repository\\TemaRepository.class\r\nplaxi\\backend\\dto\\ActualizarCursoDto.class\r\nplaxi\\backend\\service\\MinioService.class\r\nplaxi\\backend\\repository\\PersonaRepository.class\r\nplaxi\\backend\\service\\CursoService.class\r\nplaxi\\backend\\repository\\LeccionRepository.class\r\nplaxi\\backend\\controller\\MinioController.class\r\nplaxi\\backend\\entity\\S3Object.class\r\nplaxi\\backend\\controller\\PerfilController.class\r\nplaxi\\backend\\repository\\S3ObjectRepository.class\r\nplaxi\\backend\\dto\\PerfilDto.class\r\nplaxi\\backend\\dto\\ResponseDto.class\r\nplaxi\\backend\\controller\\CursoController.class\r\nplaxi\\backend\\dto\\CursoDto.class\r\nplaxi\\backend\\dto\\LeccionDto.class\r\nplaxi\\backend\\controller\\AuthController.class\r\nplaxi\\backend\\repository\\CategoriaRepository.class\r\nplaxi\\backend\\service\\PasswordGenerator.class\r\nplaxi\\backend\\entity\\Persona.class\r\nplaxi\\backend\\dto\\S3ObjectDto.class\r\nplaxi\\backend\\entity\\Curso.class\r\nplaxi\\backend\\dto\\ConocimientoPrevioDto.class\r\nplaxi\\backend\\BackendApplication.class\r\nplaxi\\backend\\controller\\UsuarioController.class\r\nplaxi\\backend\\dto\\TemaDto.class\r\nplaxi\\backend\\entity\\Leccion.class\r\nplaxi\\backend\\repository\\RolRepository.class\r\nplaxi\\backend\\service\\PerfilService.class\r\nplaxi\\backend\\entity\\Rol.class\r\nplaxi\\backend\\dto\\UsuarioDto.class\r\nplaxi\\backend\\entity\\Tema.class\r\nplaxi\\backend\\repository\\UsuarioRepository.class\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst b/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst
+--- a/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst	(revision a1a92493d5de0cf4d4a48d27e42499e419c1f6bd)
++++ b/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst	(date 1731466072671)
+@@ -36,7 +36,6 @@
+ plaxi\backend\entity\Curso.class
+ plaxi\backend\dto\ConocimientoPrevioDto.class
+ plaxi\backend\BackendApplication.class
+-plaxi\backend\controller\UsuarioController.class
+ plaxi\backend\dto\TemaDto.class
+ plaxi\backend\entity\Leccion.class
+ plaxi\backend\repository\RolRepository.class
+Index: target/classes/application.yml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>server:\r\n  port: 8080\r\n\r\nspring:\r\n  application:\r\n    name: backend\r\n  datasource:\r\n    url: jdbc:postgresql://localhost:5433/PlaxiDB\r\n    username: postgres\r\n    password: jose\r\n    driver-class-name: org.postgresql.Driver\r\n  jpa:\r\n    hibernate:\r\n      ddl-auto: update\r\n    show-sql: true\r\n    database-platform: org.hibernate.dialect.PostgreSQLDialect\r\n    properties:\r\n      hibernate:\r\n        format_sql: true\r\n        use_sql_comments: true\r\n  mail:\r\n    host: smtp.gmail.com\r\n    port: 587\r\n    username: asapsitterapp@gmail.com\r\n    password: ureeixyewmaiumra\r\n    properties:\r\n      mail:\r\n        smtp:\r\n          auth: true\r\n          starttls:\r\n            enable: true\r\n            required: true\r\n          ssl:\r\n            trust: smtp.gmail.com\r\n  servlet:\r\n    multipart:\r\n      max-file-size: 1GB\r\n      max-request-size: 1GB\r\nminio:\r\n  url: http://localhost:9000\r\n  access-key: minio\r\n  secret-key: minio1234\r\n  bucket-name: fotoperfil\r\n\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/target/classes/application.yml b/target/classes/application.yml
+--- a/target/classes/application.yml	(revision a1a92493d5de0cf4d4a48d27e42499e419c1f6bd)
++++ b/target/classes/application.yml	(date 1731466072434)
+@@ -5,9 +5,9 @@
+   application:
+     name: backend
+   datasource:
+-    url: jdbc:postgresql://localhost:5433/PlaxiDB
++    url: jdbc:postgresql://localhost:5432/PlaxiDB
+     username: postgres
+-    password: jose
++    password: 12345
+     driver-class-name: org.postgresql.Driver
+   jpa:
+     hibernate:

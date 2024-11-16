@@ -10,4 +10,6 @@ import java.util.List;
 public interface InscripcionRepository extends JpaRepository<Inscripcion, Long> {
 
     List<Inscripcion> findByUsuario_IdUsuario(Long usuarioId);
+
+    List<Inscripcion> findByCurso_IdCurso(Long cursoId);
 }

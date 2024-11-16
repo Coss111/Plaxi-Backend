@@ -6,6 +6,17 @@
   <component name="ChangeListManager">
     <list default="true" id="b31b93c9-f966-4184-865c-4048a9f6a392" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/plaxi/backend/controller/InscripcionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/plaxi/backend/controller/InscripcionController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/plaxi/backend/controller/TemaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/plaxi/backend/controller/TemaController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/plaxi/backend/dto/InscripcionResponseDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/plaxi/backend/dto/InscripcionResponseDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/plaxi/backend/repository/InscripcionRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/plaxi/backend/repository/InscripcionRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/plaxi/backend/service/InscripcionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/plaxi/backend/service/InscripcionService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/plaxi/backend/controller/InscripcionController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/plaxi/backend/controller/InscripcionController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/plaxi/backend/dto/InscripcionResponseDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/plaxi/backend/dto/InscripcionResponseDto.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/plaxi/backend/repository/InscripcionRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/plaxi/backend/repository/InscripcionRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/plaxi/backend/service/InscripcionService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/plaxi/backend/service/InscripcionService.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -154,11 +165,31 @@
       <workItem from="1730929428174" duration="235000" />
       <workItem from="1730936160924" duration="8825000" />
       <workItem from="1730986596444" duration="8000" />
+      <workItem from="1731466008276" duration="1959000" />
+      <workItem from="1731500391804" duration="26000" />
+      <workItem from="1731533532447" duration="1875000" />
+      <workItem from="1731551404468" duration="665000" />
+      <workItem from="1731586586473" duration="1540000" />
+      <workItem from="1731617226022" duration="1967000" />
+      <workItem from="1731625604076" duration="2862000" />
+      <workItem from="1731682268323" duration="48000" />
+      <workItem from="1731722146163" duration="2064000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

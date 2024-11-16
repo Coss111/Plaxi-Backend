@@ -1,0 +1,114 @@
+<changelist name="Uncommitted_changes_before_Update_at_12_11_2024_22_48_[Changes]" date="1731466087944" recycled="false" toDelete="true">
+  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_12_11_2024_22_48_[Changes]/shelved.patch" />
+  <option name="DESCRIPTION" value="Uncommitted changes before Update at 12/11/2024 22:48 [Changes]" />
+  <binary>
+    <option name="BEFORE_PATH" value="target/classes/plaxi/backend/service/InscripcionService.class" />
+    <option name="AFTER_PATH" value="target/classes/plaxi/backend/service/InscripcionService.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_12_11_2024_22_48_[Changes]/InscripcionService.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="target/classes/plaxi/backend/controller/LeccionController.class" />
+    <option name="AFTER_PATH" value="target/classes/plaxi/backend/controller/LeccionController.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_12_11_2024_22_48_[Changes]/LeccionController.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="target/classes/plaxi/backend/dto/TemaDto.class" />
+    <option name="AFTER_PATH" value="target/classes/plaxi/backend/dto/TemaDto.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_12_11_2024_22_48_[Changes]/TemaDto.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="target/classes/plaxi/backend/service/AuthService.class" />
+    <option name="AFTER_PATH" value="target/classes/plaxi/backend/service/AuthService.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_12_11_2024_22_48_[Changes]/AuthService.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="target/classes/plaxi/backend/controller/GmailGerenciaController.class" />
+    <option name="AFTER_PATH" value="target/classes/plaxi/backend/controller/GmailGerenciaController.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_12_11_2024_22_48_[Changes]/GmailGerenciaController.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="target/classes/plaxi/backend/service/PerfilService.class" />
+    <option name="AFTER_PATH" value="target/classes/plaxi/backend/service/PerfilService.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_12_11_2024_22_48_[Changes]/PerfilService.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="target/classes/plaxi/backend/service/TemaService.class" />
+    <option name="AFTER_PATH" value="target/classes/plaxi/backend/service/TemaService.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_12_11_2024_22_48_[Changes]/TemaService.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="target/classes/plaxi/backend/dto/PersonaDto.class" />
+    <option name="AFTER_PATH" value="target/classes/plaxi/backend/dto/PersonaDto.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_12_11_2024_22_48_[Changes]/PersonaDto.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="target/classes/plaxi/backend/service/LeccionService.class" />
+    <option name="AFTER_PATH" value="target/classes/plaxi/backend/service/LeccionService.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_12_11_2024_22_48_[Changes]/LeccionService.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="target/classes/plaxi/backend/dto/UsuarioDto.class" />
+    <option name="AFTER_PATH" value="target/classes/plaxi/backend/dto/UsuarioDto.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_12_11_2024_22_48_[Changes]/UsuarioDto.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="target/classes/plaxi/backend/dto/RolDto.class" />
+    <option name="AFTER_PATH" value="target/classes/plaxi/backend/dto/RolDto.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_12_11_2024_22_48_[Changes]/RolDto.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="target/classes/plaxi/backend/service/CursoService.class" />
+    <option name="AFTER_PATH" value="target/classes/plaxi/backend/service/CursoService.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_12_11_2024_22_48_[Changes]/CursoService.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="target/classes/plaxi/backend/dto/ActualizarPerfilDto.class" />
+    <option name="AFTER_PATH" value="target/classes/plaxi/backend/dto/ActualizarPerfilDto.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_12_11_2024_22_48_[Changes]/ActualizarPerfilDto.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="target/classes/plaxi/backend/dto/ResponseDto.class" />
+    <option name="AFTER_PATH" value="target/classes/plaxi/backend/dto/ResponseDto.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_12_11_2024_22_48_[Changes]/ResponseDto.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="target/classes/plaxi/backend/controller/AuthController.class" />
+    <option name="AFTER_PATH" value="target/classes/plaxi/backend/controller/AuthController.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_12_11_2024_22_48_[Changes]/AuthController.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="target/classes/plaxi/backend/controller/InscripcionController.class" />
+    <option name="AFTER_PATH" value="target/classes/plaxi/backend/controller/InscripcionController.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_12_11_2024_22_48_[Changes]/InscripcionController.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="target/classes/plaxi/backend/dto/LeccionDto.class" />
+    <option name="AFTER_PATH" value="target/classes/plaxi/backend/dto/LeccionDto.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_12_11_2024_22_48_[Changes]/LeccionDto.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="target/classes/plaxi/backend/service/MinioService.class" />
+    <option name="AFTER_PATH" value="target/classes/plaxi/backend/service/MinioService.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_12_11_2024_22_48_[Changes]/MinioService.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="target/classes/plaxi/backend/controller/CategoriaController.class" />
+    <option name="AFTER_PATH" value="target/classes/plaxi/backend/controller/CategoriaController.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_12_11_2024_22_48_[Changes]/CategoriaController.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="target/classes/plaxi/backend/dto/PaginadoDto.class" />
+    <option name="AFTER_PATH" value="target/classes/plaxi/backend/dto/PaginadoDto.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_12_11_2024_22_48_[Changes]/PaginadoDto.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="target/classes/plaxi/backend/entity/Tema.class" />
+    <option name="AFTER_PATH" value="target/classes/plaxi/backend/entity/Tema.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_12_11_2024_22_48_[Changes]/Tema.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="target/classes/plaxi/backend/dto/NewFileDto.class" />
+    <option name="AFTER_PATH" value="target/classes/plaxi/backend/dto/NewFileDto.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_12_11_2024_22_48_[Changes]/NewFileDto.class" />
+  </binary>
+</changelist>

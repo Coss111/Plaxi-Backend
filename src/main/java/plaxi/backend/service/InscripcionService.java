@@ -95,8 +95,9 @@ public class InscripcionService {
     }
 
     private InscripcionResponseDto convertToDto(Inscripcion inscripcion) {
-        // Extraer el ID del creador del curso
         Long usuarioCreadorId = inscripcion.getCurso().getUsuarioCreador() != null ? inscripcion.getCurso().getUsuarioCreador().getIdUsuario() : null;
+        String cursoDescripcion = inscripcion.getCurso().getDescripcion();
+        String cursoPortadaUrl = inscripcion.getCurso().getPortada() != null ? inscripcion.getCurso().getPortada().getUrl() : null;
 
         return new InscripcionResponseDto(
                 inscripcion.getIdInscripcion(),
@@ -107,14 +108,25 @@ public class InscripcionService {
                 inscripcion.getUsuario().getGmail(),
                 inscripcion.getCurso().getIdCurso(),
                 inscripcion.getCurso().getNombre(),
-                usuarioCreadorId
+                usuarioCreadorId,
+                cursoDescripcion,
+                cursoPortadaUrl
         );
     }
-
 
     public List<InscripcionResponseDto> getInscripcionesByUsuarioId(Long usuarioId) {
         // Obtener todas las inscripciones del repositorio
         List<Inscripcion> inscripciones = inscripcionRepository.findByUsuario_IdUsuario(usuarioId);
+        List<InscripcionResponseDto> responseList = new ArrayList<>();
+
+        for (Inscripcion inscripcion : inscripciones) {
+            responseList.add(convertToDto(inscripcion));
+        }
+        return responseList;
+    }
+
+    public List<InscripcionResponseDto> getInscripcionesByCursoId(Long cursoId) {
+        List<Inscripcion> inscripciones = inscripcionRepository.findByCurso_IdCurso(cursoId);
         List<InscripcionResponseDto> responseList = new ArrayList<>();
 
         for (Inscripcion inscripcion : inscripciones) {

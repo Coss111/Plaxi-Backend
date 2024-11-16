@@ -57,4 +57,11 @@ public class InscripcionController {
         List<InscripcionResponseDto> inscripciones = inscripcionService.getInscripcionesByUsuarioId(usuarioId);
         return ResponseEntity.ok(inscripciones);
     }
+
+    @GetMapping("/curso/{cursoId}")
+    public ResponseEntity<List<InscripcionResponseDto>> getInscripcionesByCursoId(@PathVariable Long cursoId) {
+        List<InscripcionResponseDto> inscripciones = inscripcionService.getInscripcionesByCursoId(cursoId);
+        return ResponseEntity.ok(inscripciones);
+    }
+
 }

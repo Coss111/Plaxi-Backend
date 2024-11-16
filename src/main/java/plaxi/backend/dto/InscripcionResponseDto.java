@@ -10,13 +10,14 @@ public class InscripcionResponseDto {
     private String usuarioEmail;
     private Long cursoId;
     private String cursoNombre;
-    private Long usuarioCreadorId;  // Nuevo campo agregado para ID del usuario creador del curso
+    private Long usuarioCreadorId;
+    private String cursoDescripcion;
+    private String cursoPortadaUrl;
 
     // Constructor por defecto
     public InscripcionResponseDto() {}
 
-    // Constructor con parámetros
-    public InscripcionResponseDto(Long idInscripcion, String fechaInscripcion, Boolean estadoInscripcion, Long usuarioId, String usuarioNombre, String usuarioEmail, Long cursoId, String cursoNombre, Long usuarioCreadorId) {
+    public InscripcionResponseDto(Long idInscripcion, String fechaInscripcion, Boolean estadoInscripcion, Long usuarioId, String usuarioNombre, String usuarioEmail, Long cursoId, String cursoNombre, Long usuarioCreadorId, String cursoDescripcion, String cursoPortadaUrl) {
         this.idInscripcion = idInscripcion;
         this.fechaInscripcion = fechaInscripcion;
         this.estadoInscripcion = estadoInscripcion;
@@ -26,9 +27,10 @@ public class InscripcionResponseDto {
         this.cursoId = cursoId;
         this.cursoNombre = cursoNombre;
         this.usuarioCreadorId = usuarioCreadorId;
+        this.cursoDescripcion = cursoDescripcion;
+        this.cursoPortadaUrl = cursoPortadaUrl;
     }
 
-    // Getters y Setters
     public Long getIdInscripcion() {
         return idInscripcion;
     }
@@ -99,5 +101,21 @@ public class InscripcionResponseDto {
 
     public void setUsuarioCreadorId(Long usuarioCreadorId) {
         this.usuarioCreadorId = usuarioCreadorId;
+    }
+
+    public String getCursoDescripcion() {
+        return cursoDescripcion;
+    }
+
+    public void setCursoDescripcion(String cursoDescripcion) {
+        this.cursoDescripcion = cursoDescripcion;
+    }
+
+    public String getCursoPortadaUrl() {
+        return cursoPortadaUrl;
+    }
+
+    public void setCursoPortadaUrl(String cursoPortadaUrl) {
+        this.cursoPortadaUrl = cursoPortadaUrl;
     }
 }
