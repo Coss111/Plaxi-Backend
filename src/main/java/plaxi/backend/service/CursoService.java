@@ -8,10 +8,7 @@ import plaxi.backend.dto.S3ObjectDto;
 import plaxi.backend.entity.Curso;
 import plaxi.backend.entity.S3Object;
 import plaxi.backend.entity.Usuario;
-import plaxi.backend.repository.CursoRepository;
-import plaxi.backend.repository.CategoriaRepository;
-import plaxi.backend.repository.S3ObjectRepository;
-import plaxi.backend.repository.UsuarioRepository;
+import plaxi.backend.repository.*;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -33,6 +30,9 @@ public class CursoService {
 
     @Autowired
     private S3ObjectRepository s3ObjectRepository;
+
+    @Autowired
+    private InscripcionRepository inscripcionRepository;
 
     // Obtener todos los cursos activos
     public List<CursoDto> getAllCursos() {
@@ -182,4 +182,25 @@ public class CursoService {
                 .collect(Collectors.toList());
     }
 
+
+    // Generar recomendaciones de cursos para un usuario
+    public List<CursoDto> getRecomendacionesPorUsuario(Long usuarioId) {
+        // Obtener las categorías de los cursos en los que el usuario está inscrito
+        List<Long> categorias = inscripcionRepository.findDistinctCategoriasByUsuarioId(usuarioId);
+
+        // Obtener cursos recomendados basados en esas categorías
+        List<Curso> cursosRecomendados = cursoRepository.findRecommendedCursosByCategoriasAndUsuarioId(categorias, usuarioId);
+
+        // Convertir los cursos a DTOs
+        return cursosRecomendados.stream().map(curso -> new CursoDto(
+                curso.getIdCurso(),
+                curso.getNombre(),
+                curso.getDescripcion(),
+                curso.getDificultad(),
+                curso.getPortada() != null ? curso.getPortada().getUrl() : null,
+                curso.getEstado(),
+                curso.getCategoria() != null ? curso.getCategoria().getIdCategoria() : null,
+                curso.getUsuarioCreador() != null ? curso.getUsuarioCreador().getIdUsuario() : null
+        )).collect(Collectors.toList());
+    }
 }

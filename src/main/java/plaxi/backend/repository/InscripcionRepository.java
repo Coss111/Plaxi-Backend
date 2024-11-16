@@ -21,4 +21,9 @@ public interface InscripcionRepository extends JpaRepository<Inscripcion, Long> 
             "GROUP BY i.curso.idCurso " +
             "ORDER BY totalInscripciones DESC")
     List<Object[]> findCursosPopulares();
+
+    @Query("SELECT DISTINCT i.curso.categoria.idCategoria " +
+            "FROM Inscripcion i " +
+            "WHERE i.usuario.idUsuario = :usuarioId AND i.estadoInscripcion = true")
+    List<Long> findDistinctCategoriasByUsuarioId(Long usuarioId);
 }

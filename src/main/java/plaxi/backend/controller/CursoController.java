@@ -156,4 +156,14 @@ public class CursoController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
         }
     }
+
+    @GetMapping("/recomendaciones/{usuarioId}")
+    public ResponseEntity<List<CursoDto>> getRecomendaciones(@PathVariable Long usuarioId) {
+        try {
+            List<CursoDto> recomendaciones = cursoService.getRecomendacionesPorUsuario(usuarioId);
+            return ResponseEntity.ok(recomendaciones);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+        }
+    }
 }
