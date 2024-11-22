@@ -93,32 +93,32 @@ public class TemaService {
 
     // Actualizar un tema
     public void updateTema(TemaDto temaDto, MultipartFile file) throws Exception {
-        // Find the existing tema
+        // Buscar el tema existente
         Tema tema = temaRepository.findById(temaDto.getIdTema())
                 .orElseThrow(() -> new RuntimeException("Tema no encontrado"));
-    
+
         // Obtener la lección asociada
         Leccion leccion = leccionRepository.findById(temaDto.getLeccionId())
                 .orElseThrow(() -> new RuntimeException("Lección no encontrada"));
-    
-        // Update tema fields
+
+        // Actualizar campos del tema
         tema.setTitulo(temaDto.getTitulo());
         tema.setOrden(temaDto.getOrden());
         tema.setDescripcion(temaDto.getDescripcion());
         tema.setLeccion(leccion);
-        tema.setEstado(temaDto.isEstado()); // Update estado
-    
-        // Handle the file if a new one is provided
+        tema.setEstado(true); // Forzar el estado a true
+
+        // Manejar el archivo si se proporciona uno nuevo
         if (file != null && !file.isEmpty()) {
-            // Upload new file and update recursoMultimedia
+            // Subir el nuevo archivo y actualizar recursoMultimedia
             S3ObjectDto s3ObjectDto = recursoMultimediaService.uploadFile(file);
             S3Object s3Object = s3ObjectRepository.findById(s3ObjectDto.getS3ObjectId())
                     .orElseThrow(() -> new RuntimeException("S3 Object no encontrado"));
             tema.setRecursoMultimedia(s3Object);
         }
-        // If no new file is provided, keep the existing recursoMultimedia
-    
-        // Save the updated tema
+        // Si no se proporciona un nuevo archivo, mantener el recursoMultimedia existente
+
+        // Guardar el tema actualizado
         temaRepository.save(tema);
     }
     
