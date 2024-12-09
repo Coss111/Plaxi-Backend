@@ -1,17 +1,17 @@
 server:
-  port: 8080
+  port: 8081
 
 spring:
   application:
     name: backend
   datasource:
-    url: jdbc:postgresql://localhost:5432/PlaxiDB
+    url: jdbc:postgresql://localhost:5433/PlaxiDB
     username: postgres
-    password: 12345
+    password: admin1234
     driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: none
     show-sql: true
     database-platform: org.hibernate.dialect.PostgreSQLDialect
     properties:
@@ -39,6 +39,6 @@ spring:
 minio:
   url: http://localhost:9000
   access-key: minio
-  secret-key: minio1234
+  secret-key: minio123
   bucket-name: fotoperfil
 
