@@ -4,86 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b31b93c9-f966-4184-865c-4048a9f6a392" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/282d3ec1-013f-4222-abfc-bfa4034a708e.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_12_11_2024_22_48__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_12_11_2024_22_48__Changes_.xml" afterDir="false" />
+    <list default="true" id="b31b93c9-f966-4184-865c-4048a9f6a392" name="Changes" comment="arreglo bug actualizar perfil">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/backend-0.0.1-SNAPSHOT.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/backend-0.0.1-SNAPSHOT.jar.original" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/plaxi/backend/BackendApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/plaxi/backend/BackendApplication.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/plaxi/backend/config/CorsConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/plaxi/backend/config/CorsConfig.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/plaxi/backend/config/MinioConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/plaxi/backend/config/MinioConfig.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/plaxi/backend/controller/AuthController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/plaxi/backend/controller/AuthController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/plaxi/backend/controller/CategoriaController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/plaxi/backend/controller/CategoriaController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/plaxi/backend/controller/CursoController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/plaxi/backend/controller/CursoController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/plaxi/backend/controller/GmailGerenciaController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/plaxi/backend/controller/GmailGerenciaController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/plaxi/backend/controller/InscripcionController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/plaxi/backend/controller/InscripcionController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/plaxi/backend/controller/LeccionController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/plaxi/backend/controller/MinioController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/plaxi/backend/controller/PerfilController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/plaxi/backend/controller/TemaController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/plaxi/backend/dto/ActualizarCursoDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/plaxi/backend/dto/ActualizarCursoDto.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/plaxi/backend/dto/ActualizarPerfilDto.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/plaxi/backend/dto/CategoriaDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/plaxi/backend/dto/CategoriaDto.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/plaxi/backend/dto/ConocimientoPrevioDto.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/plaxi/backend/dto/CursoDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/plaxi/backend/dto/CursoDto.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/plaxi/backend/dto/InscripcionDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/plaxi/backend/dto/InscripcionDto.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/plaxi/backend/dto/InscripcionResponseDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/plaxi/backend/dto/InscripcionResponseDto.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/plaxi/backend/dto/LeccionDto.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/plaxi/backend/dto/NewFileDto.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/plaxi/backend/dto/PaginadoDto.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/plaxi/backend/dto/PerfilDto.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/plaxi/backend/dto/PersonaDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/plaxi/backend/dto/PersonaDto.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/plaxi/backend/dto/RegisterRequestDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/plaxi/backend/dto/RegisterRequestDto.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/plaxi/backend/dto/ResponseDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/plaxi/backend/dto/ResponseDto.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/plaxi/backend/dto/RolDto.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/plaxi/backend/dto/S3ObjectDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/plaxi/backend/dto/S3ObjectDto.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/plaxi/backend/dto/TemaDto.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/plaxi/backend/dto/UsuarioDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/plaxi/backend/dto/UsuarioDto.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/plaxi/backend/entity/Categoria.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/plaxi/backend/entity/Categoria.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/plaxi/backend/entity/ConocimientoPrevio.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/plaxi/backend/entity/Curso.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/plaxi/backend/entity/Curso.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/plaxi/backend/entity/Inscripcion.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/plaxi/backend/entity/Inscripcion.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/plaxi/backend/entity/Leccion.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/plaxi/backend/entity/Persona.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/plaxi/backend/entity/Persona.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/plaxi/backend/entity/Rol.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/plaxi/backend/entity/Rol.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/plaxi/backend/entity/S3Object.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/plaxi/backend/entity/S3Object.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/plaxi/backend/entity/Tema.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/plaxi/backend/entity/Usuario.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/plaxi/backend/entity/Usuario.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/plaxi/backend/repository/CategoriaRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/plaxi/backend/repository/CategoriaRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/plaxi/backend/repository/ConocimientoPrevioRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/plaxi/backend/repository/CursoRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/plaxi/backend/repository/CursoRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/plaxi/backend/repository/InscripcionRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/plaxi/backend/repository/InscripcionRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/plaxi/backend/repository/LeccionRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/plaxi/backend/repository/PersonaRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/plaxi/backend/repository/PersonaRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/plaxi/backend/repository/RolRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/plaxi/backend/repository/RolRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/plaxi/backend/repository/S3ObjectRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/plaxi/backend/repository/S3ObjectRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/plaxi/backend/repository/TemaRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/plaxi/backend/repository/UsuarioRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/plaxi/backend/repository/UsuarioRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/plaxi/backend/service/AuthService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/plaxi/backend/service/AuthService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/plaxi/backend/service/CategoriaService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/plaxi/backend/service/CategoriaService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/plaxi/backend/service/CursoService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/plaxi/backend/service/CursoService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/plaxi/backend/service/GmailGerenciaServices.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/plaxi/backend/service/GmailGerenciaServices.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/plaxi/backend/service/InscripcionService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/plaxi/backend/service/InscripcionService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/plaxi/backend/service/LeccionService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/plaxi/backend/service/MinioService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/plaxi/backend/service/MinioService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/plaxi/backend/service/MinioService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/plaxi/backend/service/MinioService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/plaxi/backend/service/PasswordGenerator.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/plaxi/backend/service/PerfilService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/plaxi/backend/service/TemaService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/plaxi/backend/service/UsuarioService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/2024-10-03T20-17-31_388.dumpstream" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-plaxi.backend.BackendApplicationTests.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/plaxi.backend.BackendApplicationTests.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/plaxi/backend/BackendApplicationTests.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -248,8 +172,17 @@
       <workItem from="1731682268323" duration="48000" />
       <workItem from="1731722146163" duration="2402000" />
       <workItem from="1731773333729" duration="3342000" />
-      <workItem from="1733777086413" duration="5292000" />
+      <workItem from="1733777086413" duration="8600000" />
     </task>
+    <task id="LOCAL-00001" summary="arreglo bug actualizar perfil">
+      <option name="closed" value="true" />
+      <created>1733784464400</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1733784464400</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -265,6 +198,10 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="arreglo bug actualizar perfil" />
+    <option name="LAST_COMMIT_MESSAGE" value="arreglo bug actualizar perfil" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

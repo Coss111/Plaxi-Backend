@@ -71,19 +71,21 @@ public class MinioService {
 
     // Método para listar todos los archivos subidos
     public List<S3ObjectDto> listUploadedFiles() {
-        // Obtener todos los registros desde la base de datos
         List<S3Object> s3Objects = s3ObjectRepository.findAll();
 
-        // Convertir los objetos de la base de datos a DTOs
         return s3Objects.stream()
-                .map(s3Object -> new S3ObjectDto(
-                        s3Object.getS3ObjectId(),
-                        s3Object.getContentType(),
-                        s3Object.getBucket(),
-                        s3Object.getFilename(),
-                        s3Object.getUrl(),
-                        s3Object.getStatus()
-                ))
+                .map(s3Object -> {
+                    String fileUrl = generateFileUrl(s3Object.getBucket(), s3Object.getFilename());
+                    return new S3ObjectDto(
+                            s3Object.getS3ObjectId(),
+                            s3Object.getContentType(),
+                            s3Object.getBucket(),
+                            s3Object.getFilename(),
+                            fileUrl,
+                            s3Object.getStatus()
+                    );
+                })
                 .collect(Collectors.toList());
     }
+
 }
